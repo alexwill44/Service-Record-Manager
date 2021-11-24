@@ -6,6 +6,12 @@ Hang On To Your Butz
 
 {% block content %}
 
-<h1> I wish I were Home </h1>
+<h1> There is no place like Home </h1>
+
+<form action='' method='POST'>
+    {% csrf_token %}
+    {{form.as_ul}}
+    <input type='submit' class='button' value='Submit'>
+</form>
 
 {% endblock %}

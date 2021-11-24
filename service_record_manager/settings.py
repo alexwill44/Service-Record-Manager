@@ -130,3 +130,7 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'sass_processor.finders.CssFinder',
 ]
+
+# auth redirects 
+LOGIN_REDIRECT_URL = '/about/'
+LOGOUT_REDIRECT_URL = '/'
