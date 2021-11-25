@@ -133,7 +133,7 @@ STATICFILES_FINDERS = [
 ]
 
 # auth redirects 
-LOGIN_REDIRECT_URL = '/about/'
+LOGIN_REDIRECT_URL = '/motorcycles/'
 LOGOUT_REDIRECT_URL = '/'
 
 # crispy forms 
