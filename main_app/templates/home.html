@@ -1,17 +1,15 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Hang On To Your Butz
+- Hang On To Your Butz
 {% endblock %}
 
 {% block content %}
 
-<h1> There is no place like Home </h1>
+{% include 'modals/signup.html' %}
 
-<form action='' method='POST'>
-    {% csrf_token %}
-    {{form.as_ul}}
-    <input type='submit' class='button' value='Submit'>
-</form>
+{% include 'modals/signin.html' %}
+
+<h1> There is no place like Home </h1>
 
 {% endblock %}

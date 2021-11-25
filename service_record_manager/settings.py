@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main_app',
     'sass_processor',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -134,3 +135,6 @@ STATICFILES_FINDERS = [
 # auth redirects 
 LOGIN_REDIRECT_URL = '/about/'
 LOGOUT_REDIRECT_URL = '/'
+
+# crispy forms 
+CRISPY_TEMPLATE_PACK = 'uni_form'
