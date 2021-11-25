@@ -9,32 +9,7 @@
 
     <h1>Employee authorization</h1>
 
-    <h2>Where is it {{header}}</h2>
-
-<form action="" method="get" class="moto_search">
-    <input name="vin" placeholder="Enter VIN"  class="input">
-    <button class="moto_search" value='Search' type="submit"> Search </button>
-</form>
-
-{% for motorcycle in results %}
-    
-     <div class='moto_card'>
-        
-        <h5>
-            {{motorcycle.make}}, 
-            {{motorcycle.model}}, 
-            {{motorcycle.dom}}, 
-        </h5>
-        
-        <img class="moto_thumbnail" src="{{motorcycle.img}}" alt="No file / couldn't load">
-
-    </div>
-
-{% empty %}
-
-    <h3>That VIN is not in our records please add a new vehical or check your query</h3>
-
-{% endfor %}
+    {% include 'partials/tech_moto_tools.html' %}
     
 
 {%else%}

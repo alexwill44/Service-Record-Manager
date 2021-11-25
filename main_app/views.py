@@ -34,9 +34,14 @@ class Home(TemplateView):
     
 class About(TemplateView):
     template_name = 'about.html'
-
-class SearchMoto(TemplateView): 
+class MotoShow(TemplateView): 
+    model = Motorcycle
     template_name = 'moto_show.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['motorcycles'] = Motorcycle.objects.all()
+        return context
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -46,21 +51,11 @@ class SearchMoto(TemplateView):
         if vin != None: 
             context['results'] = Motorcycle.objects.filter(vin__icontains=vin)
             count = len(context['results'])
-            context["header"] = f'Found {count} with a VIN that contains {vin}'
+            context["header"] = f'Found {count} with a VIN that contains "{vin}"'
             return context
         else: 
-            context["header"] = f'{vin} why does it loose this connection'
+            context["header"] = f'{vin} is not in the database please check the number or add a new motorcycle to the database'
             return context 
-
-""" class MotoShow(TemplateView): 
-    model = Motorcycle
-    template_name = 'moto_show.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['motorcycles'] = Motorcycle.objects.all()
-        return context
- """
             
 
 
