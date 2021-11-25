@@ -3,8 +3,11 @@ from django.shortcuts import render, redirect
 # views imports
 from django.views import View
 from django.views.generic.base import TemplateView
+from django.views.generic import DetailView
+
 
 # local imports
+from main_app.models import Client, Motorcycle
 from .forms import SignUpFormClient, SignUpFormTech 
 
 #auth imports
@@ -31,3 +34,7 @@ class Home(TemplateView):
     
 class About(TemplateView):
     template_name = 'about.html'
+
+class MotoShow(TemplateView): 
+    model = Motorcycle
+    template_name = 'client/moto_show.html'

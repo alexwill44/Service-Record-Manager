@@ -23,6 +23,10 @@
   margin-top: 15px;
   width: calc(100% - 0px); }
 
+.moto_card img {
+  max-width: 240px;
+  max-height: 360px; }
+
 * {
   box-sizing: border-box; }
 

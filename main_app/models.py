@@ -26,13 +26,15 @@ class Tech(User):
         return f"{self.username}"
 
 class Motorcycle(Model): 
-    make = CharField
-    model = CharField
-    color = CharField
+    make = CharField(max_length=100)
+    model = CharField(max_length=100)
+    color = CharField(max_length=100)
     dom = CharField(max_length=8)
-    vin = CharField(max_length=13)
+    vin = CharField(max_length=17)
+    mileage = IntegerField(default=0)
+    img = CharField(max_length=1000)
     created_at = DateTimeField(auto_now_add=True)
-    owner = ForeignKey(Client, on_delete=models.CASCADE, related_name='owner')
+    owner = ForeignKey(User, on_delete=models.CASCADE, related_name='motorcycle')
 
     def __str__(self): 
         return f"{self.make}, {self.model}"
@@ -49,8 +51,8 @@ class Record(Model):
     description = TextField(max_length=10000)
     created_at = DateTimeField(auto_now_add=True)
     motorcycle = ForeignKey(Motorcycle, on_delete=models.CASCADE, related_name='records')
-    tech = ForeignKey(Tech, on_delete=SET_DEFAULT, default="No Technician Assigned", related_name='tech')
-    part = ForeignKey(Part, on_delete=SET_DEFAULT, default="Part Removed" , related_name='part')
+    tech = ForeignKey(Tech, on_delete=SET_DEFAULT, default="No Technician Assigned", related_name='record')
+    part = ForeignKey(Part, on_delete=SET_DEFAULT, default="Part Removed" , related_name='record')
 
 
 
