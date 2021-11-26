@@ -16,3 +16,4 @@ class SignUpFormTech(UserCreationForm):
     class Meta:
         model= Tech
         fields = ('username', 'email', 'first_name', 'last_name', 'rate', 'password1', 'password2')
+

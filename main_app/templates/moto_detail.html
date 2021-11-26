@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %} {{motorcycle.model}} {% endblock %}
+
+{% block content %}
+
+<div id="profile_box">
+        <img class="profile_pic user_img" src="{{motorcycle.img}}" alt="User Image">
+        <div class="col-1"></div>
+        <span>   </span>
+        <b> <p>{{motorcycle.make}} {{motorcycle.model}} {{motorcycle.dom}}</p> </b>
+    </div>
+
+    {% for record in motorcycle.record.all %}
+
+        <a href="" class="nav-link" data-toggle="modal" data-target="#record-modal">Service at: {{record.mileage}}</a>
+
+    {% empty %}
+
+        <h4>No Service Assciated with this {{motorcycle.make}} {{motorcycle.model}} VIN: {{motorcycle.vin}}</h4>
+
+    {% endfor %}
+
+
+{% endblock %}

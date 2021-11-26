@@ -52,7 +52,10 @@ class Record(Model):
     created_at = DateTimeField(auto_now_add=True)
     motorcycle = ForeignKey(Motorcycle, on_delete=models.CASCADE, related_name='records')
     tech = ForeignKey(Tech, on_delete=SET_DEFAULT, default="No Technician Assigned", related_name='record')
-    part = ForeignKey(Part, on_delete=SET_DEFAULT, default="Part Removed" , related_name='record')
+    part = ForeignKey(Part, require=False, on_delete=SET_DEFAULT, default="Part Removed" , related_name='record')
+
+    def __str__ (self):
+        return f"{self.tech.username}"
 
 
 
