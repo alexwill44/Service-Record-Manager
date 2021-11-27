@@ -2,7 +2,7 @@
 from django.db import models
 from django.db.models import Model, CharField, DateTimeField, ForeignKey
 from django.db.models.deletion import SET_DEFAULT, SET_NULL
-from django.db.models.fields import IntegerField, TextField
+from django.db.models import IntegerField, TextField, ManyToManyField
 from django.db.models.fields.related import ForeignKey, ForeignObject
 # import auth_user_model for use in foreign key 
 from django.contrib.auth.models import User
@@ -45,14 +45,14 @@ class Part(Model):
 
     def __str__ (self):
         return f"{self.part_number}"
-    
+
 class Record(Model): 
     mileage = IntegerField(default=0)
     description = TextField(max_length=10000)
     created_at = DateTimeField(auto_now_add=True)
     motorcycle = ForeignKey(Motorcycle, on_delete=models.CASCADE, related_name='records')
     tech = ForeignKey(Tech, on_delete=SET_DEFAULT, default="No Technician Assigned", related_name='record')
-    part = ForeignKey(Part, on_delete=SET_DEFAULT, default=0 , related_name='part')
+    parts = ManyToManyField(Part) 
 
     def __str__ (self):
         return f"{self.motorcycle} by {self.tech.username}, 'at' {self.mileage} miles"
