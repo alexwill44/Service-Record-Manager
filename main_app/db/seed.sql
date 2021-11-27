@@ -21,6 +21,12 @@ INSERT INTO main_app_motorcycle(make,model,dom,vin,mileage,img,created_at,color,
 
 /* Records */
 
-INSERT INTO main_app_record(mileage, description, created_at, motorcycle_id, tech_id)
-    VALUE
-        (18000, 'major serivce including valve adjustment', '2019-11-30T05:19:05.939Z', 3, 2 );
+INSERT INTO main_app_record(mileage, description, created_at, motorcycle_id, tech_id, part_id)
+    VALUES
+        (18000, 'major serivce including valve adjustment', '2019-11-30T05:19:05.939Z', 3, 2,1 );
+
+/* Parts */
+
+INSERT INTO main_app_part(part_number, description)
+    VALUES
+        ("0", "Use this number if no parts where used in this repair" );

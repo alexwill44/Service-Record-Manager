@@ -40,11 +40,11 @@ class Motorcycle(Model):
         return f"{self.make}, {self.model}"
 
 class Part(Model):
-    number = CharField
+    part_number = CharField(max_length=100)
     description = TextField(max_length=1000)
 
     def __str__ (self):
-        return f"{self.number}"
+        return f"{self.part_number}"
     
 class Record(Model): 
     mileage = IntegerField(default=0)
@@ -52,10 +52,10 @@ class Record(Model):
     created_at = DateTimeField(auto_now_add=True)
     motorcycle = ForeignKey(Motorcycle, on_delete=models.CASCADE, related_name='records')
     tech = ForeignKey(Tech, on_delete=SET_DEFAULT, default="No Technician Assigned", related_name='record')
-    part = ForeignKey(Part, require=False, on_delete=SET_DEFAULT, default="Part Removed" , related_name='record')
+    part = ForeignKey(Part, on_delete=SET_DEFAULT, default=0 , related_name='part')
 
     def __str__ (self):
-        return f"{self.tech.username}"
+        return f"{self.motorcycle} by {self.tech.username}, 'at' {self.mileage} miles"
 
 
 
