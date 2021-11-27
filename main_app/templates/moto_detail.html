@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %} {{motorcycle.model}} {% endblock %}
+
+{% block content %}
+
+<div class="moto_card">
+        <img class="profile_pic user_img" src="{{motorcycle.img}}" alt="User Image">
+        <div class="col-1"></div>
+        <span>   </span>
+        <b> <p>{{motorcycle.make}} {{motorcycle.model}} {{motorcycle.dom}}</p> </b>
+    </div>
+
+    {% for record in motorcycle.records.all %}
+
+        <a href="" class="nav-link" data-toggle="modal" data-target="#record-modal">Service at: {{record.mileage}}: {{record.description | slice:25}}</a>
+
+<!-- Service record modal-->
+    <div class="modal fade" id="record-modal" tabindex="-1" role="dialog"  >
+        <div class="modal-dialog" >
+            <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title"> Service on {{record.motorcycle}} at {{record.mileage}}</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            
+                <h5>{{record.description}}</h5>
+
+                <ul>Parts Used: </ul>
+
+                    {% for part in record.parts.all %}
+
+                    <li> {{part.part_number}} </li>
+
+                    {% empty %}
+
+                    <li>No Parts Used</li>
+
+                    {% endfor %}
+            
+            </div>
+            </div>
+        </div>
+    </div>
+
+    {% empty %}
+
+        <h4>No Service Assciated with this {{motorcycle.make}} {{motorcycle.model}} VIN: {{motorcycle.vin}}</h4>
+
+        
+    {% endfor %}
+
+
+{% endblock %}

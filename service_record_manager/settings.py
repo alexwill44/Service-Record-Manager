@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'main_app',
+    'sass_processor',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -75,8 +78,8 @@ WSGI_APPLICATION = 'service_record_manager.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'service_record_manager',
     }
 }
 
@@ -118,3 +121,20 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'static'
+SASS_PROCESSOR_ROOT = STATIC_ROOT
+
+
+# SASS Dependencies
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'sass_processor.finders.CssFinder',
+]
+
+# auth redirects 
+LOGIN_REDIRECT_URL = '/motorcycles/'
+LOGOUT_REDIRECT_URL = '/'
+
+# crispy forms 
+CRISPY_TEMPLATE_PACK = 'uni_form'
