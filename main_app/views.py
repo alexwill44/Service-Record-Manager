@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.urls import reverse
 
@@ -6,7 +7,7 @@ from django.views import View
 from django.views.generic.base import TemplateView
 from django.views.generic import DetailView, ListView, CreateView
 # local imports
-from main_app.models import Motorcycle
+from main_app.models import Motorcycle, Record
 from .forms import SignUpFormClient, SignUpFormTech 
 
 #auth imports
@@ -34,6 +35,10 @@ class Home(TemplateView):
             return render(request, 'home.html', context) 
 class About(TemplateView):
     template_name = 'about.html'
+
+""" 
+Motorcycle  
+"""
 
 ### This view includes create/list/search 
 class MotoCreate(CreateView):
@@ -77,5 +82,26 @@ class MotoDetail(DetailView):
     model = Motorcycle
     template_name = 'moto_detail.html'
 
+
+""" 
+Record 
+"""
+
+class RecordCreate(View):
+    def post(self, request, pk):
+        mileage = request.POST.get('mileage')
+        description =  request.POST.get('description')
+        parts = request.POST.get('parts')
+        motorcycle = Motorcycle.objects.get(pk=pk)
+        tech = User.objects.get(pk=pk)
+        Record.objects.create(mileage=mileage, description=description, parts=parts, motorcycle=motorcycle, tech=tech )
+        return redirect('moto_detail', pk=pk)
+   
+
+
+
+   
+    fields = ['mileage', 'description', 'parts']
+    
 
 

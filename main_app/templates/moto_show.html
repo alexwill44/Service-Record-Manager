@@ -11,7 +11,8 @@
 
     <h1>Employee authorization</h1>
 
-    {% include 'modals/moto_create.html' %}
+    {% include 'modals/create/moto_create.html' %}
+
     {% include 'partials/tech_moto_tools.html' %}
     
 
@@ -20,22 +21,26 @@
 <!-- All Client Privlages-->
 <h1>{{user.client}} id: {{user.client.id}}</h1>
 
-{% endif %}
-{% for motorcycle in user.motorcycle.all %}
-   
-    <a href="{% url 'moto_detail' motorcycle.pk %}">
-        <div class='moto_card'>    
-            <h5>
-                {{motorcycle.make}}, 
-                {{motorcycle.model}}, 
-                {{motorcycle.dom}},           
-            </h5>
-            
-            <img class="moto_thumbnail" src="{{motorcycle.img}}" alt="No file / couldn't load">
-        </div>
-    </a>
-{% endfor %}
+<div class="moto_list">
 
-<a href="" class="nav-link" data-toggle="modal" data-target="#moto-create-modal"><button>Add Motorcycle</button></a>
+    {% endif %}
+    {% for motorcycle in user.motorcycle.all %}
+    
+        <a href="{% url 'moto_detail' motorcycle.pk %}">
+            <div class='moto_card'>    
+                <h5>
+                    {{motorcycle.make}}, 
+                    {{motorcycle.model}}, 
+                    {{motorcycle.dom}},           
+                </h5>
+                
+                <img class="moto_thumbnail" src="{{motorcycle.img}}" alt="No file / couldn't load">
+            </div>
+        </a>
+    {% endfor %}
+
+    <a href="" class="nav-link" data-toggle="modal" data-target="#moto-create-modal"><button>Add Motorcycle</button></a>
+
+</div>
 
 {% endblock %}
