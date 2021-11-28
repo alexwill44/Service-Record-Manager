@@ -15,11 +15,15 @@
                 {{motorcycle.make}}, 
                 {{motorcycle.model}}, 
                 {{motorcycle.dom}}, 
+                 <a href="" class="nav-link" data-toggle="modal" data-target="#moto-delete-modal-{{motorcycle.pk}}"><i class="fa fa-trash" aria-hidden="true"></i></a>     
             </h5>
             
             <img class="moto_thumbnail" src="{{motorcycle.img}}" alt="No file / couldn't load">
         </div>
     </a>
+
+    {% include 'modals/delete/moto_delete.html' %}
+
 {% empty %}
 
     <h3>That VIN is not in our records please add a new vehical or check your query</h3>

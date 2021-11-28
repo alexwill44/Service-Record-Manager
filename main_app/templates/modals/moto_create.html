@@ -12,10 +12,9 @@
       <div class="modal-body">
        <form action='' method='POST'>
             {% csrf_token %}
+            {{ form.as_ul }}
             
-            {{form.as_ul}}
-            
-        </div>
+      </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-primary">
                 <input type='submit' class='button'     value='Submit'>

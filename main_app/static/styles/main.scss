@@ -1,10 +1,18 @@
 @import './modal';
 @import './moto_card';
+@import './background_effect';
 
 *{
     box-sizing: border-box;
 }
 
 body{
-    background-color: greenyellow;
+    background-color: grey;
 }
+
+body {
+    margin: 0;
+    overflow: hidden;
+  }
+  
+  

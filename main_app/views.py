@@ -5,9 +5,6 @@ from django.urls import reverse
 from django.views import View
 from django.views.generic.base import TemplateView
 from django.views.generic import DetailView, ListView, CreateView
-
-
-
 # local imports
 from main_app.models import Motorcycle
 from .forms import SignUpFormClient, SignUpFormTech 
@@ -38,11 +35,19 @@ class Home(TemplateView):
 class About(TemplateView):
     template_name = 'about.html'
 
-# Includes search bar 
-class MotoShow(TemplateView): 
+### This view includes create/list/search 
+class MotoCreate(CreateView):
     model = Motorcycle
+    fields = ['make', 'model', 'color', 'dom', 'vin', 'mileage', 'img', 'owner']
     template_name = 'moto_show.html'
-
+### Create New Moto
+    def get_success_url(self):
+        return reverse ('moto_detail', kwargs={'pk': self.object.pk})
+    
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(MotoCreate, self).form_valid(form)
+### Searchbar 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['motorcycles'] = Motorcycle.objects.all()
@@ -62,22 +67,15 @@ class MotoShow(TemplateView):
             context["header"] = f'{vin} is not in the database please check the entry or add a new motorcycle to the database'
             return context 
 
-class MotoCreate(CreateView):
-    model = Motorcycle
-    fields = ['make', 'model', 'color', 'dom', 'vin', 'mileage', 'img', 'owner']
-    template_name = 'moto_show.html'
+class MotoDelete(View):
+    def post(self, request, pk): 
+        Motorcycle.objects.filter(pk=pk).delete()
+        return redirect(request.META.get('HTTP_REFERER', '/')) 
 
-    def get_sucess_url(self):
-        return reverse ('moto_detail', kwargs={'pk': self.object.pk})
-    
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super(MotoCreate, self).form_valid(form)
 
 class MotoDetail(DetailView):
     model = Motorcycle
     template_name = 'moto_detail.html'
-                
 
 
-    
+

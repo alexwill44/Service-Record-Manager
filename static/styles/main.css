@@ -33,6 +33,10 @@
   box-sizing: border-box; }
 
 body {
-  background-color: greenyellow; }
+  background-color: grey; }
+
+body {
+  margin: 0;
+  overflow: hidden; }
 
 /*# sourceMappingURL=main.css.map */
