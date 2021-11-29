@@ -13,8 +13,6 @@
     
     {% if user.tech %}
 
-        <button class="btn is-success "><a class="nav-link" data-toggle="modal" data-target="#record-create-modal"> + Add Record</a></button>
-
         {% include 'modals/create/record_create.html' %}
     
     {% endif %}
@@ -23,10 +21,10 @@
 
     
 
-        <a class="nav-link" data-toggle="modal" data-target="#record-modal">Service at: {{record.mileage}}: {{record.description | slice:25}}</a>
+        <a class="nav-link" data-toggle="modal" data-target="#record-modal-{{record.pk}}">Service at: {{record.mileage}}: {{record.description | slice:25}}</a>
 
 <!-- Service record modal-->
-    <div class="modal fade" id="record-modal" tabindex="-1" role="dialog"  >
+    <div class="modal fade" id="record-modal-{{record.pk}}" tabindex="-1" role="dialog"  >
         <div class="modal-dialog" >
             <div class="modal-content">
             <div class="modal-header">

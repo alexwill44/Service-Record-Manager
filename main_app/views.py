@@ -6,9 +6,10 @@ from django.urls import reverse
 from django.views import View
 from django.views.generic.base import TemplateView
 from django.views.generic import DetailView, ListView, CreateView
+
 # local imports
-from main_app.models import Motorcycle, Record
-from .forms import SignUpFormClient, SignUpFormTech 
+from main_app.models import Motorcycle, Record, Tech, Part
+from .forms import SignUpFormClient, SignUpFormTech, CreateRecordForm 
 
 #auth imports
 from django.contrib.auth import login
@@ -82,26 +83,31 @@ class MotoDetail(DetailView):
     model = Motorcycle
     template_name = 'moto_detail.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['parts'] = Part.objects.all()
+        return context
+    
 
 """ 
 Record 
 """
 
-class RecordCreate(View):
-    def post(self, request, pk):
-        mileage = request.POST.get('mileage')
-        description =  request.POST.get('description')
-        parts = request.POST.get('parts')
+class RecordCreate(CreateView):  
+    def post(self, request, pk, user_pk):
         motorcycle = Motorcycle.objects.get(pk=pk)
-        tech = User.objects.get(pk=pk)
-        Record.objects.create(mileage=mileage, description=description, parts=parts, motorcycle=motorcycle, tech=tech )
+        tech = Tech.objects.get(pk=user_pk)
+        mileage = request.POST.get('mileage')
+        description = request.POST.get('description')
+        parts = request.POST.get('parts')
+        instance = Record.objects.create(mileage=mileage, description=description, motorcycle=motorcycle, tech=tech )
+        f""" or part in parts: 
+            instance.parts.add(*part) """
+
+        
         return redirect('moto_detail', pk=pk)
-   
-
-
 
    
-    fields = ['mileage', 'description', 'parts']
     
 
 

@@ -51,7 +51,7 @@ class Record(Model):
     description = TextField(max_length=10000)
     created_at = DateTimeField(auto_now_add=True)
     motorcycle = ForeignKey(Motorcycle, on_delete=models.CASCADE, related_name='records')
-    tech = ForeignKey(Tech, on_delete=SET_DEFAULT, default="No Technician Assigned", related_name='record')
+    tech = ForeignKey(User, on_delete=SET_DEFAULT, default="No Technician Assigned", related_name='record')
     parts = ManyToManyField(Part) 
 
     def __str__ (self):
