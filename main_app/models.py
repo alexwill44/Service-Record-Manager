@@ -6,6 +6,7 @@ from django.db.models import IntegerField, TextField, ManyToManyField
 from django.db.models.fields.related import ForeignKey, ForeignObject
 # import auth_user_model for use in foreign key 
 from django.contrib.auth.models import User
+from django.urls.base import reverse
 
 
 # Create your models here.
@@ -56,6 +57,9 @@ class Record(Model):
 
     def __str__ (self):
         return f"{self.motorcycle} by {self.tech.username}, 'at' {self.mileage} miles"
+
+    class Meta:
+        ordering = ['-created_at']
 
 
 

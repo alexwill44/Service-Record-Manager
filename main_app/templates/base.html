@@ -46,15 +46,23 @@
         <a class="nav-link" href="/"> Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/about/">About</a>
+        <a class="nav-link" href="/about/"> About </a>
       </li>
       
       {% if user.is_authenticated %}
       
       <li class="nav-item">
-        <a href="{% url 'logout' %}" class="nav-link" >Sign Out</a>
+        <a href="{% url 'logout' %}" class="nav-link" > Sign Out </a>
       </li>
       
+      {% if user.tech %}
+        <li>
+          <a href="{% url 'parts_list' %}" class="nav-link"> Parts </a>
+        </li>
+        <li>
+          <a href="{% url 'moto_show' %}" class="nav-link" > Motorcycles </a>
+        </li>
+      {% endif %}
 
 
 

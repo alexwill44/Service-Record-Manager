@@ -40,7 +40,7 @@ class About(TemplateView):
 """ 
 Motorcycle  
 """
-method_decorator(login_required, name='dispatch')
+@method_decorator(login_required(login_url='/'), name='dispatch')
 ### This view includes create/list/search 
 class MotoCreate(CreateView):
     model = Motorcycle
@@ -73,13 +73,13 @@ class MotoCreate(CreateView):
             context["header"] = f'{vin} is not in the database please check the entry or add a new motorcycle to the database'
             return context 
 
-method_decorator(login_required, name='dispatch')
+@method_decorator(login_required(login_url='/'), name='dispatch')
 class MotoDelete(View):
     def post(self, request, pk): 
         Motorcycle.objects.filter(pk=pk).delete()
         return redirect(request.META.get('HTTP_REFERER', '/')) 
 
-method_decorator(login_required, name='dispatch')
+@method_decorator(login_required(login_url='/'), name='dispatch')
 class MotoDetail(DetailView):
     model = Motorcycle
     template_name = 'moto_detail.html'
@@ -94,7 +94,7 @@ class MotoDetail(DetailView):
 """ 
 Record 
 """
-method_decorator(login_required, name='dispatch')
+@method_decorator(login_required(login_url='/'), name='dispatch')
 class RecordCreate(CreateView):  
 
     def post(self, request, pk, user_pk):
@@ -108,20 +108,38 @@ class RecordCreate(CreateView):
             instance.parts.add(*part)         
         return redirect('moto_detail', pk=pk)
 
-method_decorator(login_required, name='dispatch')
+@method_decorator(login_required(login_url='/'), name='dispatch')
 class RecordDelete(DeleteView):
     def post (self, request, pk):
         Record.objects.filter(pk=pk).delete()
         return redirect(request.META.get('HTTP_REFERER', '/'))
-
-method_decorator(login_required, name='dispatch')
+######## record update is incomplete and not working
+@method_decorator(login_required(login_url='/'), name='dispatch')
 class RecordUpdate(UpdateView):
     model = Record
     fields = ['description', 'parts']
 
     def get_success_url(self, requests):
         return redirect(requests.META.get('HTTP_REFERER', '/'))
-   
+
+""" 
+Part
+"""
+class PartsList(CreateView):
+    model = Part
+    fields = ['part_number', 'description']
+    template_name = 'parts_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['parts'] = Part.objects.all()
+        return context
+        
+    def post(self, request):
+        num = request.POST.get('part_number')
+        des = request.POST.get('description')
+        Part.objects.create(part_number=num, description=des)
+        return redirect('parts_list')
     
 
 
