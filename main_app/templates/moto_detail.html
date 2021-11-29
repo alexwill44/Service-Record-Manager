@@ -13,6 +13,10 @@
     
     {% if user.tech %}
 
+    
+
+        <button class="btn is-success "><a class="nav-link" data-toggle="modal" data-target="#record-create-modal"> + Add Record</a></button>
+
         {% include 'modals/create/record_create.html' %}
     
     {% endif %}

@@ -86,6 +86,7 @@ class MotoDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['parts'] = Part.objects.all()
+        context['form'] = CreateRecordForm
         return context
     
 
@@ -94,15 +95,16 @@ Record
 """
 
 class RecordCreate(CreateView):  
+
     def post(self, request, pk, user_pk):
         motorcycle = Motorcycle.objects.get(pk=pk)
         tech = Tech.objects.get(pk=user_pk)
         mileage = request.POST.get('mileage')
         description = request.POST.get('description')
-        parts = request.POST.get('parts')
+        parts = request.POST.getlist('parts')
         instance = Record.objects.create(mileage=mileage, description=description, motorcycle=motorcycle, tech=tech )
-        f""" or part in parts: 
-            instance.parts.add(*part) """
+        for part in parts: 
+            instance.parts.add(*part) 
 
         
         return redirect('moto_detail', pk=pk)

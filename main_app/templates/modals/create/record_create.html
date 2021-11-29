@@ -1,7 +1,5 @@
 
-
 {% block content %}
- <button class="btn is-success "><a class="nav-link" data-toggle="modal" data-target="#record-create-modal"> + Add Record</a></button>
 
 <div class="modal fade" id="record-create-modal" tabindex="-1" role="dialog"  >
   <div class="modal-dialog" >
@@ -16,13 +14,8 @@
        
         <form method="POST" action="{% url 'record_create' motorcycle.pk user.pk %}">
             {% csrf_token %}
+            {{ form.as_ul }}
 
-# need to add the form here
-            <input type="number" name="mileage" placeholder="Current Mileage" class="input" required>
-            <input type="text" name="description" placeholder="input description" class="input" required>
-            {% for part in parts.all %}
-            <label ><input type="checkbox" name="parts" class="input">{{part.part_number}}</label>
-            {% endfor %}
             
       </div>
         <div class="modal-footer">
