@@ -5,7 +5,7 @@ from django.urls import reverse
 # views imports
 from django.views import View
 from django.views.generic.base import TemplateView
-from django.views.generic import DetailView, ListView, CreateView
+from django.views.generic import DetailView, ListView, CreateView, DeleteView, UpdateView
 
 # local imports
 from main_app.models import Motorcycle, Record, Tech, Part
@@ -40,7 +40,7 @@ class About(TemplateView):
 """ 
 Motorcycle  
 """
-
+method_decorator(login_required, name='dispatch')
 ### This view includes create/list/search 
 class MotoCreate(CreateView):
     model = Motorcycle
@@ -73,12 +73,13 @@ class MotoCreate(CreateView):
             context["header"] = f'{vin} is not in the database please check the entry or add a new motorcycle to the database'
             return context 
 
+method_decorator(login_required, name='dispatch')
 class MotoDelete(View):
     def post(self, request, pk): 
         Motorcycle.objects.filter(pk=pk).delete()
         return redirect(request.META.get('HTTP_REFERER', '/')) 
 
-
+method_decorator(login_required, name='dispatch')
 class MotoDetail(DetailView):
     model = Motorcycle
     template_name = 'moto_detail.html'
@@ -93,7 +94,7 @@ class MotoDetail(DetailView):
 """ 
 Record 
 """
-
+method_decorator(login_required, name='dispatch')
 class RecordCreate(CreateView):  
 
     def post(self, request, pk, user_pk):
@@ -104,11 +105,22 @@ class RecordCreate(CreateView):
         parts = request.POST.getlist('parts')
         instance = Record.objects.create(mileage=mileage, description=description, motorcycle=motorcycle, tech=tech )
         for part in parts: 
-            instance.parts.add(*part) 
-
-        
+            instance.parts.add(*part)         
         return redirect('moto_detail', pk=pk)
 
+method_decorator(login_required, name='dispatch')
+class RecordDelete(DeleteView):
+    def post (self, request, pk):
+        Record.objects.filter(pk=pk).delete()
+        return redirect(request.META.get('HTTP_REFERER', '/'))
+
+method_decorator(login_required, name='dispatch')
+class RecordUpdate(UpdateView):
+    model = Record
+    fields = ['description', 'parts']
+
+    def get_success_url(self, requests):
+        return redirect(requests.META.get('HTTP_REFERER', '/'))
    
     
 

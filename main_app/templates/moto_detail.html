@@ -13,19 +13,30 @@
     
     {% if user.tech %}
 
-    
-
         <button class="btn is-success "><a class="nav-link" data-toggle="modal" data-target="#record-create-modal"> + Add Record</a></button>
 
+
         {% include 'modals/create/record_create.html' %}
+
     
     {% endif %}
     
     {% for record in motorcycle.records.all %}
 
-    
 
         <a class="nav-link" data-toggle="modal" data-target="#record-modal-{{record.pk}}">Service at: {{record.mileage}}: {{record.description | slice:25}}</a>
+
+         {% if user.tech %}
+
+        <a href="" class="nav-link" data-toggle="modal" data-target="#record-update-modal-{{record.pk}}"> - Update<i class="far fa-edit" aria-hidden="true"></i></a>
+        {% include 'modals/update/record_update.html' %}
+
+        <a href="" class="nav-link" data-toggle="modal" data-target="#record-delete-modal-{{record.pk}}"> - Remove<i class="fa fa-trash" aria-hidden="true"></i></a>
+        {% include 'modals/delete/record_delete.html' %}
+
+
+        {% endif %}
+
 
 <!-- Service record modal-->
     <div class="modal fade" id="record-modal-{{record.pk}}" tabindex="-1" role="dialog"  >

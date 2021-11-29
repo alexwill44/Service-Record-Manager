@@ -1,9 +1,8 @@
 
-from django.db.models.fields.related import ForeignKey
-from django.forms import EmailField, CharField, IntegerField, ModelMultipleChoiceField, CheckboxSelectMultiple
+from django.forms import EmailField, IntegerField,ModelMultipleChoiceField, CheckboxSelectMultiple, TextInput
 from django.contrib.auth.forms import UserCreationForm
 from django.forms.models import ModelForm
-from .models import Client, Motorcycle, Record, Tech, Part, User
+from .models import Client, Record, Tech, Part
 
 class SignUpFormClient(UserCreationForm):
     email = EmailField(help_text='Please use a valid email address')
@@ -25,6 +24,6 @@ class CreateRecordForm(ModelForm):
         fields = ['mileage', 'description', 'parts']
         
     mileage = IntegerField()
-    description = CharField()
+    description = TextInput()
     parts = ModelMultipleChoiceField(queryset=Part.objects.all(), widget=CheckboxSelectMultiple)
     
