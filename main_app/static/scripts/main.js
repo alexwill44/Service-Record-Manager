@@ -1,16 +1,11 @@
 
-console.log('! ! main.js loaded ! !');
+console.log(' main.js loaded javaScript w/ jQuery');
 
 $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
   })
 
-/* background style effect */
-let c = 45;
-
-function draw(){
-  document.documentElement.style.setProperty('--direction', c++ + 'deg');
-  requestAnimationFrame(draw);
-}
-
-requestAnimationFrame(draw);
+/* Downdown logic */
+$('.dropdown-menu').on('show.bs.dropdown', function () {
+  console.log('clicked it -> we are listening ');
+})

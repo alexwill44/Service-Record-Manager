@@ -96,7 +96,6 @@ Record
 """
 @method_decorator(login_required(login_url='/'), name='dispatch')
 class RecordCreate(CreateView):  
-
     def post(self, request, pk, user_pk):
         motorcycle = Motorcycle.objects.get(pk=pk)
         tech = Tech.objects.get(pk=user_pk)
@@ -119,8 +118,8 @@ class RecordUpdate(UpdateView):
     model = Record
     fields = ['description', 'parts']
 
-    def get_success_url(self, requests):
-        return redirect(requests.META.get('HTTP_REFERER', '/'))
+    def get_success_url(self):
+        return self.request.session['previous_page']
 
 """ 
 Part
