@@ -5,7 +5,12 @@ $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
   })
 
-/* Downdown logic */
-$('.dropdown-menu').on('show.bs.dropdown', function () {
-  console.log('clicked it -> we are listening ');
-})
+
+// text editor
+
+
+/* tinymce.init({
+  selector: 'textarea',
+  menubar: false,
+  content_css: 'default',
+}); */

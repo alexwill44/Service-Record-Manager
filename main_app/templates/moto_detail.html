@@ -34,22 +34,21 @@
 
         <div class="record_card">
             <a class="nav-link" data-toggle="modal" data-target="#record-modal-{{record.pk}}">Service at: {{record.mileage}}: {{record.description | slice:25}}</a>
-{% if user.tech %}
+    {% if user.tech %}
             <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Technician Tools
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                 <a href="" class="nav-link" data-toggle="modal" data-target="#record-update-modal-{{record.pk}}"> - Update<i class="far fa-edit" aria-hidden="true"></i></a>
+                 <a href="{% url 'record_update' record.pk %}"> - Update<i class="far fa-edit" aria-hidden="true"></i></a>
                  <a href="" class="nav-link" data-toggle="modal" data-target="#record-delete-modal-{{record.pk}}"> - Remove<i class="fa fa-trash" aria-hidden="true"></i></a>
             </div>
             </div>
                        
-            {% include 'modals/update/record_update.html' %}
             {% include 'modals/delete/record_delete.html' %}
         </div>
 
-{% endif %}
+    {% endif %}
 
 
 <!-- Service record modal-->

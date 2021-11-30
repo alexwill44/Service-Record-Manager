@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form method="POST" action="{% url 'record_update' record.pk %}">
+            {% csrf_token %}
+
+            <span>
+                <label for="description">Add Notes: </label>
+                <textarea  
+                value="{{record.description}}" placeholder="{{record.description}}" name="description" id="description" cols="30" rows="10"></textarea>
+            </span>
+            <span>
+                {% for part in parts %}
+                <input type="checkbox" name="parts" id="parts">
+                <label for="parts">{{part.part_number}} </label>
+                {% empty %}
+                 <p>Error: Failed to load parts</p>
+                {% endfor %}
+            </span>   
+
+            <button type='submit' name='submit'>Update Record</button>
+
+</form>
+
+{% endblock %}

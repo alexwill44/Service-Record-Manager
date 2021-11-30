@@ -95,7 +95,8 @@ class MotoDetail(DetailView):
 Record 
 """
 @method_decorator(login_required(login_url='/'), name='dispatch')
-class RecordCreate(CreateView):  
+class RecordCreate(CreateView):
+    
     def post(self, request, pk, user_pk):
         motorcycle = Motorcycle.objects.get(pk=pk)
         tech = Tech.objects.get(pk=user_pk)
@@ -112,15 +113,21 @@ class RecordDelete(DeleteView):
     def post (self, request, pk):
         Record.objects.filter(pk=pk).delete()
         return redirect(request.META.get('HTTP_REFERER', '/'))
-######## record update is incomplete and not working
+
 @method_decorator(login_required(login_url='/'), name='dispatch')
 class RecordUpdate(UpdateView):
     model = Record
-    fields = ['description', 'parts']
+    fields = ['description']
+    template_name = 'record_update.html'
 
     def get_success_url(self):
-        return self.request.session['previous_page']
+        return reverse('moto_detail', kwargs={'pk': self.object.motorcycle.pk})
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['parts'] = Part.objects.all()
+        return context 
+    
 """ 
 Part
 """

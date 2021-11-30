@@ -14,8 +14,11 @@
        
         <form method="POST" action="{% url 'record_create' motorcycle.pk user.pk %}">
             {% csrf_token %}
-            {{ form.as_ul }}
 
+           <input name="mileage" type="number" max='999999' required>
+
+           <label for="description"> Write Repair Order </label>
+           <textarea name="description" id="" cols="100" rows="40" placeholder="Type here..." ></textarea>
             
       </div>
         <div class="modal-footer">
