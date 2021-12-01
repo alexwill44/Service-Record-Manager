@@ -25,6 +25,19 @@
     {% endfor %}
     </div>
 
+
+    <div class="status">
+    Set Status:
+        <button class="checkedin"><a href="{% url 'moto_status' record.motorcycle.pk 1 %}">Checked In {{record.motorcycle.pk}} </a></button>
+        <button class="repair"><a href="{% url 'moto_status' record.motorcycle.pk 2 %}">Undergoing Repair</a></button>
+        <button class="awaiting_parts"><a href="{% url 'moto_status' record.motorcycle.pk 3 %}">Awaiting Parts</a></button>
+        <button class="awaiting_decision"><a href="{% url 'moto_status' record.motorcycle.pk 4 %}">Awaiting Customer Decision</a></button>
+        <button class="ready"><a href="{% url 'moto_status' record.motorcycle.pk 5 %}">Ready for Pick Up</a></button>
+        <button class="storage"><a href="{% url 'moto_status' record.motorcycle.pk 6 %}">In Storage</a></button>
+        <button class="none"><a href="{% url 'moto_status' record.motorcycle.pk 0 %}">Not In</a></button>
+    </div>
+
+
     <div class="invantory">
     <h5>Parts Invantory</h5>
         {% for part in parts %}

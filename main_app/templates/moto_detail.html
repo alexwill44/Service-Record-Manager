@@ -14,7 +14,7 @@
         {% if motorcycle.status == 1 %}
         <div class="status checkedin">Checked In</div>
         {% elif motorcycle.status == 2 %}
-        <div class="status repair"> Being Repaired </div>
+        <div class="status repair">Undergoing Repair</div>
         {% elif motorcycle.status == 3 %}
         <div class="status awaitng_parts">Awaiting Parts</div>
         {% elif motorcycle.status == 4 %}
@@ -22,7 +22,7 @@
         {% elif motorcycle.status == 5 %}
         <div class="status ready">Ready for Pick Up</div>
         {% elif motorcycle.status == 6 %}
-        <div class="status storage">Ready for Pick Up</div>
+        <div class="status storage">In Storage</div>
         {% else %}
         {%endif%}
         

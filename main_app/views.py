@@ -90,6 +90,25 @@ class MotoDetail(DetailView):
         context['form'] = CreateRecordForm
         return context
     
+@method_decorator(login_required(login_url='/'), name='dispatch')
+class MotoStatusUpdate(View):
+
+    def get(self, request, pk, st):
+        if st == 0 :
+            Motorcycle.objects.filter(pk=pk).update(status=st)
+        if st == 1 :
+            Motorcycle.objects.filter(pk=pk).update(status=st)
+        if st == 2 :
+            Motorcycle.objects.filter(pk=pk).update(status=st)
+        if st == 3 :
+            Motorcycle.objects.filter(pk=pk).update(status=st)
+        if st == 4 :
+            Motorcycle.objects.filter(pk=pk).update(status=st)
+        if st == 5 :
+            Motorcycle.objects.filter(pk=pk).update(status=st)
+        if st == 6 :
+            Motorcycle.objects.filter(pk=pk).update(status=st)
+        return redirect(request.META.get('HTTP_REFERER', '/'))        
 
 """ 
 Record 
@@ -132,6 +151,7 @@ class RecordUpdate(UpdateView):
 """ 
 Part
 """
+@method_decorator(login_required(login_url='/'), name='dispatch')
 class PartsList(CreateView):
     model = Part
     fields = ['part_number', 'description']
@@ -147,7 +167,8 @@ class PartsList(CreateView):
         des = request.POST.get('description')
         Part.objects.create(part_number=num, description=des)
         return redirect('parts_list')
-    
+
+@method_decorator(login_required(login_url='/'), name='dispatch')   
 class RecordPartAssoc(View): 
 
     def get(self, request, pk, part_pk):
