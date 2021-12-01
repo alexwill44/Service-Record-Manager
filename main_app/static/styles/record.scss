@@ -1,0 +1,27 @@
+.parts_box{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    
+    .on_record{
+        .part{
+            border: 2px solid white;
+            background: darken($color: grey, $amount: 15%)
+        }
+    }
+
+}
+
+.part_card{ 
+    display:flex;
+
+}
+
+.fa-times{
+    color: red;
+}
+
+.fa-plus{
+    color:lighten($color: green, $amount: 20%);
+}
+

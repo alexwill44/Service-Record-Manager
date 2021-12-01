@@ -25,7 +25,8 @@
 
     {% endif %}
     {% for motorcycle in user.motorcycle.all %}
-    
+
+    <div class="list_card">
         <a href="{% url 'moto_detail' motorcycle.pk %}">
             <div class='moto_card'>    
                 <h5>
@@ -37,6 +38,7 @@
                 <img class="moto_thumbnail" src="{{motorcycle.img}}" alt="No file / couldn't load">
             </div>
         </a>
+    </div>
     {% endfor %}
 
     <a href="" class="nav-link" data-toggle="modal" data-target="#moto-create-modal"><button>Add Motorcycle</button></a>

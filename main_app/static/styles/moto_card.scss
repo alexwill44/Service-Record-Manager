@@ -47,3 +47,31 @@
     margin-left: 15vw;
     border-left:5px double black;
 }
+
+.status{
+    border:2px solid black;
+
+}
+    .checkedin{
+        background-color: grey;
+    }   
+    
+    .repair{
+        background-color: red;
+    }
+
+    .awaiting_parts{
+        background-color: orange;
+    }
+
+    .awaiting_decision{
+        background-color: yellow;
+    }
+
+    .ready{
+        background-color: lighten($color: green, $amount: 15%)
+    }
+
+    .storage{
+        background-color: blue;
+    }

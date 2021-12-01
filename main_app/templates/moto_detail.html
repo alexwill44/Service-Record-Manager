@@ -11,11 +11,24 @@
         <p> Color: {{motorcycle.color}} </p>
         <p> VIN: {{motorcycle.vin}}</p>
         <p> Customer: {{motorcycle.owner}}</p>
+        {% if motorcycle.status == 1 %}
+        <div class="status checkedin">Checked In</div>
+        {% elif motorcycle.status == 2 %}
+        <div class="status repair"> Being Repaired </div>
+        {% elif motorcycle.status == 3 %}
+        <div class="status awaitng_parts">Awaiting Parts</div>
+        {% elif motorcycle.status == 4 %}
+        <div class="status awaiting_decision">Awaiting Customer Decision</div>
+        {% elif motorcycle.status == 5 %}
+        <div class="status ready">Ready for Pick Up</div>
+        {% elif motorcycle.status == 6 %}
+        <div class="status storage">Ready for Pick Up</div>
+        {% else %}
+        {%endif%}
         
         {% if user.tech %}
 
-        <button class="btn is-success "><a class="nav-link" data-toggle="modal" data-target="#record-create-modal"> + Add Record</a></button>
-
+        <button class="btn is-success "><a class="nav-link" data-toggle="modal" data-target="#record-create-modal"> Start New Service Record </a></button>
 
         {% include 'modals/create/record_create.html' %}
 
@@ -40,8 +53,8 @@
                 Technician Tools
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                 <a href="{% url 'record_update' record.pk %}"> - Update<i class="far fa-edit" aria-hidden="true"></i></a>
-                 <a href="" class="nav-link" data-toggle="modal" data-target="#record-delete-modal-{{record.pk}}"> - Remove<i class="fa fa-trash" aria-hidden="true"></i></a>
+                 <a href="{% url 'record_update' record.pk %}" class="nav-link"> - Update <i class="far fa-edit" aria-hidden="true"></i></a>
+                 <a href="" class="nav-link" data-toggle="modal" data-target="#record-delete-modal-{{record.pk}}"> - Remove <i class="fa fa-trash" aria-hidden="true"></i></a>
             </div>
             </div>
                        

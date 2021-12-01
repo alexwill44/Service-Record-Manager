@@ -33,6 +33,7 @@ class Motorcycle(Model):
     dom = CharField(max_length=8)
     vin = CharField(max_length=17)
     mileage = IntegerField(default=0)
+    status = IntegerField(default=0)
     img = CharField(max_length=1000)
     created_at = DateTimeField(auto_now_add=True)
     owner = ForeignKey(User, on_delete=models.CASCADE, related_name='motorcycle')

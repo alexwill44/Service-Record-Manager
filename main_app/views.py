@@ -30,7 +30,7 @@ class Home(TemplateView):
         if form.is_valid():
             client = form.save()
             login(request, client)
-            return redirect('moto_show')
+            return redirect('moto_list')
         else: 
             context = {'form': form}
             return render(request, 'home.html', context) 
@@ -45,7 +45,7 @@ Motorcycle
 class MotoCreate(CreateView):
     model = Motorcycle
     fields = ['make', 'model', 'color', 'dom', 'vin', 'mileage', 'img', 'owner']
-    template_name = 'moto_show.html'
+    template_name = 'moto_list.html'
 ### Create New Moto
     def get_success_url(self):
         return reverse ('moto_detail', kwargs={'pk': self.object.pk})
@@ -125,7 +125,8 @@ class RecordUpdate(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['parts'] = Part.objects.all()
+        record = Record.objects.get(pk=self.object.pk)
+        context['parts'] = Part.objects.exclude(id__in=record.parts.all().values_list('id'))
         return context 
     
 """ 
@@ -147,5 +148,16 @@ class PartsList(CreateView):
         Part.objects.create(part_number=num, description=des)
         return redirect('parts_list')
     
+class RecordPartAssoc(View): 
+
+    def get(self, request, pk, part_pk):
+        assoc = request.GET.get('assoc')
+
+        if assoc == 'remove':
+            Record.objects.get(pk=pk).parts.remove(part_pk)
+        if assoc == 'add':
+            Record.objects.get(pk=pk).parts.add(part_pk)
+
+        return redirect('record_update', pk=pk)
 
 
