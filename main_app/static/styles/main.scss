@@ -1,0 +1,40 @@
+@import './modal';
+@import './moto_card';
+@import './background_effect';
+@import './record.scss';
+@import './moto_list.scss';
+@import './tech_list.scss';
+@import './forms.scss';
+
+*{
+    box-sizing: border-box;
+    a{
+        text-decoration: none;
+        color: black;
+    }
+}
+
+body{
+    background-color: grey;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+nav-item{
+       display:flex;
+}  
+
+.dropdown-menu{
+    background: lighten($color: grey, $amount: 10%);
+    z-index: 1;
+    border: 1px dashed whitesmoke;
+}
+
+
+
+  
+  

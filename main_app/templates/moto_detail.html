@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block title %} {{motorcycle.model}} {% endblock %}
+
+{% block content %}
+
+<div class="moto_card">
+        <img class="moto_img" src="{{motorcycle.img}}" alt="User Image">
+        <div class='info'>   
+        <b> <p>{{motorcycle.make}} {{motorcycle.model}} {{motorcycle.dom}}</p> </b>
+        <p> Color: {{motorcycle.color}} </p>
+        <p> VIN: {{motorcycle.vin}}</p>
+        <p> Customer: {{motorcycle.owner}}</p>
+        {% if motorcycle.status == 1 %}
+        <div class="status checkedin">Checked In</div>
+        {% elif motorcycle.status == 2 %}
+        <div class="status repair">Undergoing Repair</div>
+        {% elif motorcycle.status == 3 %}
+        <div class="status awaiting_parts">Awaiting Parts</div>
+        {% elif motorcycle.status == 4 %}
+        <div class="status awaiting_decision">Awaiting Customer Decision</div>
+        {% elif motorcycle.status == 5 %}
+        <div class="status ready">Ready for Pick Up</div>
+        {% elif motorcycle.status == 6 %}
+        <div class="status storage">In Storage</div>
+        {% else %}
+        {%endif%}
+        
+        {% if user.tech %}
+
+        <button class="btn is-success "><a class="nav-link" data-toggle="modal" data-target="#record-create-modal"> Start New Service Record </a></button>
+
+        {% include 'modals/create/record_create.html' %}
+
+    
+    {% endif %}
+        
+        </div>
+
+
+    
+</div>
+    
+    
+    
+    {% for record in motorcycle.records.all %}
+
+        <div class="record_card">
+            <a class="nav-link" data-toggle="modal" data-target="#record-modal-{{record.pk}}">Service at: {{record.mileage}}</a>
+    {% if user.tech %}
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Technician Tools
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a href="{% url 'record_update' record.pk %}" class="nav-link"> - Update <i class="far fa-edit" aria-hidden="true"></i></a>
+                    <a href="" class="nav-link" data-toggle="modal" data-target="#record-delete-modal-{{record.pk}}"> - Remove <i class="fa fa-trash" aria-hidden="true"></i></a>
+                </div>
+            </div>
+                       
+            {% include 'modals/delete/record_delete.html' %}
+        </div>
+
+    {% endif %}
+
+
+<!-- Service record modal-->
+    <div class="modal fade" id="record-modal-{{record.pk}}" tabindex="-1" role="dialog"  >
+        <div class="modal-dialog" >
+            <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title"> Service on {{record.motorcycle}} at {{record.mileage}}</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            
+                <h5>{{record.description | safe}}</h5>
+
+                <p> Parts Used: </p>
+
+                    {% for part in record.parts.all %}
+
+                    <li> {{part.part_number}} </li>
+
+                    {% empty %}
+
+                    <li>No Parts Used</li>
+
+                    {% endfor %}
+            
+            </div>
+            </div>
+        </div>
+    </div>
+
+    {% empty %}
+
+        <h4>No Service Assciated with this {{motorcycle.make}} {{motorcycle.model}} VIN: {{motorcycle.vin}}</h4>
+
+        
+    {% endfor %}
+
+
+{% endblock %}

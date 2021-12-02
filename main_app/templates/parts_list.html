@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a class="nav-link" data-toggle="modal" data-target="#part-create-modal"><button> + Part </button></a>
+
+{% include 'modals/create/part_create.html' %}
+<ul>
+
+{% for part in parts %}
+    <li>
+    <h5>{{part.part_number}}</h5>
+    <p>{{part.description}}</p>
+    </li>
+{% endfor %}
+
+</ul>
+
+{% endblock %}

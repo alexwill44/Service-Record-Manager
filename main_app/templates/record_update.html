@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form method="POST" action="{% url 'record_update' record.pk %}">
+            {% csrf_token %}
+
+            <span>
+                <label class="record_he" for="description">Update Service Record: </label>
+                <textarea class="record_update_text" id="description" cols="30" rows="10" name="description"
+                value="{{record.decription}}" placeholder=" Customer Request / Repairs / Recomendataions... *** in v2 This will be replaced with an add technicains note section inorder to preserve the integrity of the orginal documentation***" ></textarea>
+            </span>
+            <div class="record_update_btns">
+                <button class="btn btn-secondary" type='submit' name='submit'>Update Record</button>
+                <button class="back btn btn-secondary" ><a class="back_to_moto" href="{% url 'moto_detail' record.motorcycle.pk %}"> Back To Motorcycle </a></button>
+                <div class="dropdown status_update">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Set Status
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="nav-link checkedin" href="{% url 'moto_status' record.motorcycle.pk 1 %}">Checked In </a>
+                        <a 
+                        class="nav-link repair" href="{% url 'moto_status' record.motorcycle.pk 2 %}">Undergoing Repair</a>
+                        <a 
+                        class="nav-link awaiting_parts" href="{% url 'moto_status' record.motorcycle.pk 3 %}">Awaiting Parts</a>
+                        <a 
+                        class="nav-link awaiting_decision" href="{% url 'moto_status' record.motorcycle.pk 4 %}">Awaiting Customer Decision</a>
+                        <a class="nav-link ready" href="{% url 'moto_status' record.motorcycle.pk 5 %}">Ready for Pick Up</a>
+                        <a 
+                        class="nav-link storage" href="{% url 'moto_status' record.motorcycle.pk 6 %}">In Storage</a>
+                        <a 
+                        class="nav-link none" href="{% url 'moto_status' record.motorcycle.pk 0 %}">None</a>
+                    </div>
+                </div>
+            </div>
+</form>
+    <h5 class="part_header">Parts Used: </h5>
+    <div class="parts_box">
+        <div class="on_record">
+        {% for part in record.parts.all %}
+            <a href="{% url 'record_part_assoc' record.pk part.pk %}?assoc=remove" class="record_update_part">{{part.part_number}}
+            <i class="fas fa-times"></i></a> 
+        {% endfor %}
+        </div>
+    </div>
+
+   
+
+    <div class="invantory">
+        <h5 class="part_header">Parts Invantory: </h5>
+        <div class="parts_box">
+            <div class="on_record">
+            {% for part in parts %}
+                <a href="{% url 'record_part_assoc' record.pk part.pk %}?assoc=add" class="record_update_part">{{part.part_number}}
+                <i class="fas fa-plus"></i></a> 
+        {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

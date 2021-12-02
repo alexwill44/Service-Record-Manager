@@ -1,0 +1,26 @@
+{% block content %}
+    <!-- Modal for Delete Record -->
+    <div class="modal fade delete-post-modal" id="record-delete-modal-{{record.pk}}" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete Record</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you would like to perminently remove the service record at {{record.mileage}}?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <form action="{% url 'record_delete' record.pk %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

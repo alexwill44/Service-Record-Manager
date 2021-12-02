@@ -1,0 +1,82 @@
+.record_header {
+    margin: 5% 33% 5% 37%; 
+    font-size: 1.2em;
+    font-weight: bold;
+    border-left: 1px solid red;
+    border-bottom: 1px solid red;
+}
+
+.parts_box{
+    display: flex;
+    margin: 0 5%;
+    
+    .on_record{
+        display:grid;
+        grid-template-columns: 1fr 1fr 1fr ;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
+}
+
+.record_update_part{
+    border: 1px solid whitesmoke;
+    color: whitesmoke;
+    border-radius: 3px;
+    min-width: 30vw;
+    text-align: center;
+    padding: 1% 0;
+
+    i{
+        display:none;
+    }
+}
+
+.record_update_part:hover{
+    background: whitesmoke;
+    color:grey;
+    text-decoration:none;
+
+    i{
+        display:unset;
+    }
+}
+
+.part_header{
+    margin-left: 5%;
+}
+
+.part_card{ 
+    display:flex;
+}
+
+.fa-times {
+    color: red;
+}
+
+.fa-plus {
+    color:lighten($color: green, $amount: 20%);
+}
+
+.record_update_btns {
+    display: flex;
+    justify-content: center;
+    margin: 0 5%;
+
+    button, div{
+        margin: 2.5% 0% 2.5% 2.5%;
+        
+        a {
+           text-decoration: none;
+        }
+    }
+
+    .back_to_moto{
+        color:white;
+    }
+
+}
+
+.tox-tinymce {
+    margin: 0 5%;
+    border-radius: 5%;
+}
+

@@ -1,0 +1,46 @@
+
+
+.modal-content {
+
+    #modal-body-override {
+        padding: 40px 30px 80px 30px;
+    }
+
+    .modal-body, .modal-header{
+        background-color: grey;
+    }
+
+    .modal-header {
+        padding-left: 30px;
+        border-bottom: 3px solid grey;
+    }
+
+    p {
+        display: flex;
+        flex-direction: column;
+        color: black;
+    }
+
+    h5 {
+        color: black;
+    }
+
+    .modal-footer{
+        background: grey;
+        border-top: 5px solid red;
+        
+        .btn{
+            
+        }  
+    }
+
+    .container-submit-button {
+        display: flex;
+        justify-content: center;
+    }
+
+    .btn-primary {
+        margin-top: 15px;
+        width: calc(100% - 0px);
+    }
+}
