@@ -224,6 +224,9 @@
     display: inline;
     font-size: 12px; }
 
+.moto_search .btn {
+  color: black; }
+
 .uniForm {
   display: flex;
   flex-direction: column;

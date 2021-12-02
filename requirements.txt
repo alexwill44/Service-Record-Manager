@@ -1,36 +1,13 @@
-asgiref                   3.2.10                   pypi_0    pypi
-ca-certificates           2020.10.14                    0    anaconda
-certifi                   2020.6.20                py38_0    anaconda
-dj-database-url           0.5.0                    pypi_0    pypi
-django                    3.1.2                      py_0    anaconda
-django-appconf            1.0.5                    pypi_0    pypi
-django-babeljs            0.2                      pypi_0    pypi
-django-compressor         2.4.1                    pypi_0    pypi
-django-crispy-forms       1.13.0                   pypi_0    pypi
-django-heroku             0.3.1                    pypi_0    pypi
-django-sass-processor     1.1                      pypi_0    pypi
-gunicorn                  20.1.0                   pypi_0    pypi
-krb5                      1.17.1               hddcf347_0    anaconda
-libcxx                    10.0.0                        1    anaconda
-libedit                   3.1.20191231         h1de35cc_1    anaconda
-libffi                    3.3                  hb1e8313_2    anaconda
-libpq                     12.2                 h051b688_0    anaconda
-libsass                   0.21.0                   pypi_0    pypi
-ncurses                   6.2                  h0a44026_1    anaconda
-openssl                   1.1.1h               haf1e3a3_0    anaconda
-pip                       20.2.4                   py38_0    anaconda
-psycopg2                  2.8.5            py38hddc9c9b_0    anaconda
-python                    3.8.5                h26836e1_1    anaconda
-pytz                      2020.1                     py_0    anaconda
-rcssmin                   1.0.6                    pypi_0    pypi
-readline                  8.0                  h1de35cc_0    anaconda
-rjsmin                    1.1.0                    pypi_0    pypi
-setuptools                50.3.0           py38h0dc7051_1    anaconda
-six                       1.16.0                   pypi_0    pypi
-sqlite                    3.33.0               hffcf06c_0    anaconda
-sqlparse                  0.4.1                      py_0    anaconda
-tk                        8.6.10               hb0a8c7a_0    anaconda
-wheel                     0.35.1                     py_0    anaconda
-whitenoise                5.3.0                    pypi_0    pypi
-xz                        5.2.5                h1de35cc_0    anaconda
-zlib                      1.2.11               h1de35cc_3    anaconda
+asgiref==3.3.4
+autopep8==1.5.7
+dj-database-url==0.5.0
+Django==3.2
+django-heroku==0.3.1
+gunicorn==20.1.0
+psycopg2-binary==2.8.6
+pycodestyle==2.7.0
+pytz==2021.1
+sqlparse==0.4.1
+toml==0.10.2
+whitenoise==5.2.0
+django-crispy-forms==1.13.0
