@@ -90,13 +90,40 @@
 .status_update {
   display: inline; }
 
+.record_header {
+  margin: 5% 33% 5% 37%;
+  font-size: 1.2em;
+  font-weight: bold;
+  border-left: 1px solid red;
+  border-bottom: 1px solid red; }
+
 .parts_box {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr; }
-  .parts_box .on_record .part {
-    border: 2px solid white;
-    background: #5a5a5a; }
+  display: flex;
+  margin: 0 5%; }
+  .parts_box .on_record {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr; }
+
+.record_update_part {
+  border: 1px solid whitesmoke;
+  color: whitesmoke;
+  border-radius: 3px;
+  min-width: 30vw;
+  text-align: center;
+  padding: 1% 0; }
+  .record_update_part i {
+    display: none; }
+
+.record_update_part:hover {
+  background: whitesmoke;
+  color: grey;
+  text-decoration: none; }
+  .record_update_part:hover i {
+    display: unset; }
+
+.part_header {
+  margin-left: 5%; }
 
 .part_card {
   display: flex; }
@@ -106,6 +133,21 @@
 
 .fa-plus {
   color: #00e600; }
+
+.record_update_btns {
+  display: flex;
+  justify-content: center;
+  margin: 0 5%; }
+  .record_update_btns button, .record_update_btns div {
+    margin: 2.5% 0% 2.5% 2.5%; }
+    .record_update_btns button a, .record_update_btns div a {
+      text-decoration: none; }
+  .record_update_btns .back_to_moto {
+    color: white; }
+
+.tox-tinymce {
+  margin: 0 5%;
+  border-radius: 5%; }
 
 .list_card {
   padding: 15px;
