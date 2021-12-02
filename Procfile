@@ -1,1 +1,1 @@
-web: gunicorn service-record-manager.wsgi
+web: gunicorn service_record_manager.wsgi
