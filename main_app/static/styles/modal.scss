@@ -12,6 +12,7 @@
 
     .modal-header {
         padding-left: 30px;
+        border-bottom: 3px solid grey;
     }
 
     p {
@@ -22,6 +23,15 @@
 
     h5 {
         color: black;
+    }
+
+    .modal-footer{
+        background: grey;
+        border-top: 5px solid red;
+        
+        .btn{
+            
+        }  
     }
 
     .container-submit-button {

@@ -1,4 +1,6 @@
-{% block content %}
+{% comment %} this modal isn't used in v1 {% endcomment %}
+{% comment %} {% block content %}
+
 
 <div class="modal fade" id="record-update-modal-{{record.pk}}" tabindex="-1" role="dialog"  >
   <div class="modal-dialog" >
@@ -11,7 +13,7 @@
       </div>
       <div class="modal-body">
        
-        <form method="POST" action="{% url 'record_update' record.pk %}">
+        <form class="uniForm" method="POST" action="{% url 'record_update' record.pk %}">
             {% csrf_token %}
 
             <span>
@@ -40,4 +42,4 @@
 </div>
 
 
-{% endblock %}  
+{% endblock %}   {% endcomment %}

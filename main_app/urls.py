@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import Home, About, MotoCreate, MotoDetail, MotoDelete, RecordCreate, RecordDelete, RecordPartAssoc, RecordUpdate, PartsList, MotoStatusUpdate
+from .views import Home, About, MotoCreate, MotoDetail, MotoDelete, RecordCreate, RecordDelete, RecordPartAssoc, RecordUpdate, PartsList, MotoStatusUpdate, TechCreate
 
 urlpatterns = [
     path('', Home.as_view(), name='home'),
@@ -12,5 +12,6 @@ urlpatterns = [
     path('record/<int:pk>/update/', RecordUpdate.as_view(), name='record_update'),
     path('parts/', PartsList.as_view(), name='parts_list'),
     path('record/<int:pk>/part/<int:part_pk>/', RecordPartAssoc.as_view(), name='record_part_assoc'),
-    path('record/<int:pk>/status/<int:st>', MotoStatusUpdate.as_view(), name='moto_status')
+    path('record/<int:pk>/status/<int:st>', MotoStatusUpdate.as_view(), name='moto_status'),
+    path('technician/new/', TechCreate.as_view(), name='tech_create')
 ]

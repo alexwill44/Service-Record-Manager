@@ -1,0 +1,28 @@
+.uniForm{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-around;
+
+    input{
+        margin-left: 10%;
+        width: 80%;    
+    }
+
+    label{
+        margin-top: 5%;
+        margin-left: 10%;
+        width: 20%;
+    }
+
+    li{
+        list-style:none;
+    }
+
+}
+
+
+.helptext{
+    display: none;
+}
+

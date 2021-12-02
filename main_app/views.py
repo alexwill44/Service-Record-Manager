@@ -34,9 +34,27 @@ class Home(TemplateView):
         else: 
             context = {'form': form}
             return render(request, 'home.html', context) 
+            
 class About(TemplateView):
     template_name = 'about.html'
 
+class TechCreate(TemplateView):
+    template_name = 'tech_create.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = SignUpFormTech()
+        return context 
+
+    def post(self, request):
+        form = SignUpFormTech(request.POST)
+        if form.is_valid():
+            tech = form.save()
+            login(request, tech)
+            return redirect('/')
+        else: 
+            context = {'form': form}
+            return render(request, 'tech_create.html', context) 
 """ 
 Motorcycle  
 """
@@ -70,7 +88,6 @@ class MotoCreate(CreateView):
             context["header"] = f'Found {count} with a VIN that contains "{vin}"'
             return context
         else: 
-            context["header"] = f'{vin} is not in the database please check the entry or add a new motorcycle to the database'
             return context 
 
 @method_decorator(login_required(login_url='/'), name='dispatch')
@@ -149,7 +166,7 @@ class RecordUpdate(UpdateView):
         return context 
     
 """ 
-Part
+Part 
 """
 @method_decorator(login_required(login_url='/'), name='dispatch')
 class PartsList(CreateView):

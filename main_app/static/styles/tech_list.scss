@@ -1,0 +1,62 @@
+.tech_list{
+    display: flex;
+
+    .card {
+        padding: 15px;
+        margin-left: 5vw;
+        margin-top: 2vh;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        flex-direction: column;
+        width: 55vw;
+        transition: 0.1s linear;
+    }
+
+    .gallery .card {
+        display: flex;
+        padding: 5px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        justify-content: center;
+        gap: 30px
+    }
+
+    .gallery .card:hover{
+        transform: scale(1.1);
+        border: 2px solid lighten($color: grey, $amount: 40%);
+        background: grey;
+        transition: .25s ease-in-out;
+        z-index: 10;
+            
+        img {
+                border: 2px solid lighten($color: grey, $amount: 40%);
+        }
+    }
+
+    .display-page{
+        
+        margin: 15px 0 0 15px;
+    }
+
+    .display-pagecard{
+        background-color: lightgrey
+    }
+
+    .card-image{
+        padding: 20px;
+    }
+
+    .tech_image {
+        width: 80%;
+        max-height: 400px;
+        object-fit: cover;
+        object-position: top;
+        border: 2px solid, red;
+        border-radius: 7px;
+    } 
+
+    p{
+        display: inline;
+        font-size: 12px;
+    }
+}

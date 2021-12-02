@@ -5,20 +5,20 @@
   <div class="modal-dialog" >
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" >Create Record</h5>
+        <h5 class="modal-title" > Start New Service Record</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span>&times;</span>
         </button>
       </div>
       <div class="modal-body">
        
-        <form method="POST" action="{% url 'record_create' motorcycle.pk user.pk %}">
+        <form class="uniForm" method="POST" action="{% url 'record_create' motorcycle.pk user.pk %}">
             {% csrf_token %}
-
+            <label for="mileage"> Current Milage: </label>
            <input name="mileage" type="number" max='999999' required>
 
            <label for="description"> Write Repair Order </label>
-           <textarea name="description" id="" cols="100" rows="40" placeholder="Type here..." ></textarea>
+           <textarea name="description" id="" cols="40" rows="20" placeholder="Type here..." ></textarea>
             
       </div>
         <div class="modal-footer">

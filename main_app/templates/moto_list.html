@@ -4,12 +4,7 @@
 <!-- Technician Privalages-->
 
 
-<h2>Pick A Bike to view records</h2>
-
-
 {% if user.tech %}
-
-    <h1>Employee authorization</h1>
 
     {% include 'modals/create/moto_create.html' %}
 
@@ -19,7 +14,7 @@
 {%else%}
 
 <!-- All Client Privlages-->
-<h1>{{user.client}} id: {{user.client.id}}</h1>
+<h1> Welcome to the shop {{user.client.username}} click on your bike to view service history and status.</h1>
 
 <div class="moto_list">
 
@@ -30,9 +25,24 @@
         <a href="{% url 'moto_detail' motorcycle.pk %}">
             <div class='moto_card'>    
                 <h5>
-                    {{motorcycle.make}}, 
-                    {{motorcycle.model}}, 
-                    {{motorcycle.dom}},           
+                   <span> {{motorcycle.make}}, </span>
+                   <span> {{motorcycle.model}}, </span>
+                    <span>{{motorcycle.dom}}, </span>
+                    {% if motorcycle.status == 1 %}
+                    <div class="status checkedin">Checked In</div>
+                    {% elif motorcycle.status == 2 %}
+                    <div class="status repair">Undergoing Repair</div>
+                    {% elif motorcycle.status == 3 %}
+                    <div class="status awaiting_parts">Awaiting Parts</div>
+                    {% elif motorcycle.status == 4 %}
+                    <div class="status awaiting_decision">Awaiting Customer Decision</div>
+                    {% elif motorcycle.status == 5 %}
+                    <div class="status ready">Ready for Pick Up</div>
+                    {% elif motorcycle.status == 6 %}
+                    <div class="status storage">In Storage</div>
+                    {% else %}
+                    {%endif%}
+                           
                 </h5>
                 
                 <img class="moto_thumbnail" src="{{motorcycle.img}}" alt="No file / couldn't load">
@@ -40,8 +50,6 @@
         </a>
     </div>
     {% endfor %}
-
-    <a href="" class="nav-link" data-toggle="modal" data-target="#moto-create-modal"><button>Add Motorcycle</button></a>
 
 </div>
 

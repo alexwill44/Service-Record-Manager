@@ -16,7 +16,7 @@
         {% elif motorcycle.status == 2 %}
         <div class="status repair">Undergoing Repair</div>
         {% elif motorcycle.status == 3 %}
-        <div class="status awaitng_parts">Awaiting Parts</div>
+        <div class="status awaiting_parts">Awaiting Parts</div>
         {% elif motorcycle.status == 4 %}
         <div class="status awaiting_decision">Awaiting Customer Decision</div>
         {% elif motorcycle.status == 5 %}
@@ -46,16 +46,16 @@
     {% for record in motorcycle.records.all %}
 
         <div class="record_card">
-            <a class="nav-link" data-toggle="modal" data-target="#record-modal-{{record.pk}}">Service at: {{record.mileage}}: {{record.description | slice:25}}</a>
+            <a class="nav-link" data-toggle="modal" data-target="#record-modal-{{record.pk}}">Service at: {{record.mileage}}</a>
     {% if user.tech %}
             <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Technician Tools
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                 <a href="{% url 'record_update' record.pk %}" class="nav-link"> - Update <i class="far fa-edit" aria-hidden="true"></i></a>
-                 <a href="" class="nav-link" data-toggle="modal" data-target="#record-delete-modal-{{record.pk}}"> - Remove <i class="fa fa-trash" aria-hidden="true"></i></a>
-            </div>
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Technician Tools
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a href="{% url 'record_update' record.pk %}" class="nav-link"> - Update <i class="far fa-edit" aria-hidden="true"></i></a>
+                    <a href="" class="nav-link" data-toggle="modal" data-target="#record-delete-modal-{{record.pk}}"> - Remove <i class="fa fa-trash" aria-hidden="true"></i></a>
+                </div>
             </div>
                        
             {% include 'modals/delete/record_delete.html' %}
@@ -76,9 +76,9 @@
             </div>
             <div class="modal-body">
             
-                <h5>{{record.description}}</h5>
+                <h5>{{record.description | safe}}</h5>
 
-                <ul>Parts Used: </ul>
+                <p> Parts Used: </p>
 
                     {% for part in record.parts.all %}
 

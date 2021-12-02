@@ -4,30 +4,53 @@
 
 <form action="" method="get" class="moto_search">
     <input name="vin" placeholder="Enter VIN"  class="input">
-    <button class="moto_search" value='Search' type="submit"> Search </button>
+    <button class="moto_search" value='Search' type="submit"> Search </button><a href="" class="nav-link" data-toggle="modal" data-target="#moto-create-modal"><button> Add Motorcycle </button></a>
 </form>
 <div class="moto_list">
-
+    
     {% for motorcycle in results %}
-        
-    <a href="{% url 'moto_detail' motorcycle.pk %}">
-            <div class='moto_card'>    
-                <h5>
-                    {{motorcycle.make}}, 
-                    {{motorcycle.model}}, 
-                    {{motorcycle.dom}}, 
-                    <a href="" class="nav-link" data-toggle="modal" data-target="#moto-delete-modal-{{motorcycle.pk}}"><i class="fa fa-trash" aria-hidden="true"></i></a>     
-                </h5>
-                
-                <img class="moto_thumbnail" src="{{motorcycle.img}}" alt="No file / couldn't load">
-            </div>
-        </a>
+    
+    <div class="tech_list gallery">
+        <div class="gallery">
+            
+                        <a href="{% url 'moto_detail' motorcycle.pk%}">
+            
+                        <div class="card">
+                        
+                                <img class="tech_image" src="{{motorcycle.img}}" alt="{{motorcycle.model}}" />
+                        <div class="tech_details">
+                            <p class="card-header-title"> {{motorcycle.make}}
+                            {{motorcycle.model}} {{motorcycle.dom}}</p>
+                            <p class="card-header-title">{{motorcycle.vin}}
+                            </p>
+                            <p class="card-header-title">{{motorcycle.mileage}}
+                            </p>
+                            {% if motorcycle.status == 1 %}
+                                <div class="status checkedin">Checked In</div>
+                                {% elif motorcycle.status == 2 %}
+                                <div class="status repair">Undergoing Repair</div>
+                                {% elif motorcycle.status == 3 %}
+                                <div class="status awaiting_parts">Awaiting Parts</div>
+                                {% elif motorcycle.status == 4 %}
+                                <div class="status awaiting_decision">Awaiting Customer Decision</div>
+                                {% elif motorcycle.status == 5 %}
+                                <div class="status ready">Ready for Pick Up</div>
+                                {% elif motorcycle.status == 6 %}
+                                <div class="status storage">In Storage</div>
+                                {% else %}
+                            {%endif%}
+                            
+                            </a>
+                        </div>
+                        </div>
 
+
+        
         {% include 'modals/delete/moto_delete.html' %}
 
     {% empty %}
 
-        <h3>That VIN is not in our records please add a new vehical or check your query</h3>
+        <h3 class="empty">That VIN is not in our records please add a new vehical or check your query</h3>
 
     {% endfor %}
 
