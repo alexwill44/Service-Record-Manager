@@ -14,3 +14,4 @@ tinymce.init({
   menubar: false,
   content_css: 'default',
 }); 
+$('textarea').attr('required', false);

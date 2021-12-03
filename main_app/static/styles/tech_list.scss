@@ -1,9 +1,41 @@
+.list_header {
+    border-bottom:7px groove lighten($color: red, $amount: 10%) ;
+    border-left:7px ridge lighten($color: red, $amount: 10%);
+    margin: 40px 10% 10px 10%;
+}
+ 
+.search_moto {
+    padding: 1% 3% 1% 3%;
+    align-items: space-around;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    margin-left: 30%;
+    margin-right: 30%;
+    border-top: 2px solid whitesmoke;
+    border-left: 2px solid whitesmoke;
+    border-radius: 5px;
+
+    .tech_tool_btn, a{
+        color: black;
+    }        
+
+    .tech_tool_btn {
+        margin: 5px;
+    }
+}
+
+.empty{
+    margin: 20px 10% 10px 10%;
+    border:5px dotted whitesmoke;
+}
+
 .tech_list{
     display: flex;
 
     .card {
         padding: 15px;
-        margin-left: 5vw;
+        margin-left: 40%;
+        margin-right: 50%;
         margin-top: 2vh;
         margin-bottom: 20px;
         padding-bottom: 20px;
@@ -33,19 +65,6 @@
         }
     }
 
-    .display-page{
-        
-        margin: 15px 0 0 15px;
-    }
-
-    .display-pagecard{
-        background-color: lightgrey
-    }
-
-    .card-image{
-        padding: 20px;
-    }
-
     .tech_image {
         width: 80%;
         max-height: 400px;
@@ -56,7 +75,13 @@
     } 
 
     p{
-        display: inline;
-        font-size: 12px;
+        margin-top: 15px;
+        font-size: 1em;
+    }
+
+    a{ 
+        text-decoration: none;
+        color: black;
     }
 }
+

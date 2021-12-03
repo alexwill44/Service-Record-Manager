@@ -1,11 +1,19 @@
 {% block content %}
 
-<h2>{{header}}</h2>
+<h2 class="list_header">{{header}}</h2>
 
 <form action="" method="get" class="moto_search">
-    <input name="vin" placeholder="Enter VIN"  class="input">
-    <button class="moto_search" value='Search' type="submit"> Search </button><a href="" class="nav-link" data-toggle="modal" data-target="#moto-create-modal"><button> Add Motorcycle </button></a>
+  <div class="search_moto">
+        <div class="search_controls">
+            <input name="vin" placeholder="Enter VIN"  class="input search_vin">
+        
+            <button class="tech_tool_btn btn btn-outline-primary" value='Search' type="submit"> Search </button>
+
+            <button class="tech_tool_btn btn btn-outline-success"><a href="" class="nav-link" data-toggle="modal" data-target="#moto-create-modal"> Add Motorcycle </a></button>
+        </div>
+  </div>      
 </form>
+
 <div class="moto_list">
     
     {% for motorcycle in results %}
@@ -13,36 +21,37 @@
     <div class="tech_list gallery">
         <div class="gallery">
             
-                        <a href="{% url 'moto_detail' motorcycle.pk%}">
-            
-                        <div class="card">
-                        
-                                <img class="tech_image" src="{{motorcycle.img}}" alt="{{motorcycle.model}}" />
-                        <div class="tech_details">
-                            <p class="card-header-title"> {{motorcycle.make}}
-                            {{motorcycle.model}} {{motorcycle.dom}}</p>
-                            <p class="card-header-title">{{motorcycle.vin}}
-                            </p>
-                            <p class="card-header-title">{{motorcycle.mileage}}
-                            </p>
-                            {% if motorcycle.status == 1 %}
-                                <div class="status checkedin">Checked In</div>
-                                {% elif motorcycle.status == 2 %}
-                                <div class="status repair">Undergoing Repair</div>
-                                {% elif motorcycle.status == 3 %}
-                                <div class="status awaiting_parts">Awaiting Parts</div>
-                                {% elif motorcycle.status == 4 %}
-                                <div class="status awaiting_decision">Awaiting Customer Decision</div>
-                                {% elif motorcycle.status == 5 %}
-                                <div class="status ready">Ready for Pick Up</div>
-                                {% elif motorcycle.status == 6 %}
-                                <div class="status storage">In Storage</div>
-                                {% else %}
-                            {%endif%}
-                            
-                            </a>
-                        </div>
-                        </div>
+                <a href="{% url 'moto_detail' motorcycle.pk%}">
+    
+                <div class="card">
+                
+                        <img class="tech_image" src="{{motorcycle.img}}" alt="{{motorcycle.model}}" />
+                    <div class="tech_details">
+                        <p class="card-header-title"> {{motorcycle.make}}
+                        {{motorcycle.model}} {{motorcycle.dom}}</p>
+                        <p class="card-header-title">{{motorcycle.vin}}
+                        </p>
+                        <p class="card-header-title">Mileage at first visit: {{motorcycle.mileage}}
+                        </p>
+
+                        {% if motorcycle.status == 1 %}
+                            <div class="status checkedin">Checked In</div>
+                            {% elif motorcycle.status == 2 %}
+                            <div class="status repair">Undergoing Repair</div>
+                            {% elif motorcycle.status == 3 %}
+                            <div class="status awaiting_parts">Awaiting Parts</div>
+                            {% elif motorcycle.status == 4 %}
+                            <div class="status awaiting_decision">Awaiting Customer Decision</div>
+                            {% elif motorcycle.status == 5 %}
+                            <div class="status ready">Ready for Pick Up</div>
+                            {% elif motorcycle.status == 6 %}
+                            <div class="status storage">In Storage</div>
+                            {% else %}
+                        {%endif%}
+                    
+                    </a>
+                    </div>
+                </div>
 
 
         

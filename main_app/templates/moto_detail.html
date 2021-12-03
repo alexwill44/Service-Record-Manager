@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<div class="moto_card">
+    <div class="moto_card">
         <img class="moto_img" src="{{motorcycle.img}}" alt="User Image">
         <div class='info'>   
         <b> <p>{{motorcycle.make}} {{motorcycle.model}} {{motorcycle.dom}}</p> </b>
@@ -28,25 +28,29 @@
         
         {% if user.tech %}
 
-        <button class="btn is-success "><a class="nav-link" data-toggle="modal" data-target="#record-create-modal"> Start New Service Record </a></button>
+        <button type="button" class="create_record btn btn-outline-success"><a class="nav-link" data-toggle="modal" data-target="#record-create-modal"> New Record </a></button> 
 
         {% include 'modals/create/record_create.html' %}
-
     
-    {% endif %}
+        {% endif %}
         
         </div>
-
-
-    
-</div>
+    </div>
     
     
     
     {% for record in motorcycle.records.all %}
-
+    <div class="card_holder">
         <div class="record_card">
-            <a class="nav-link" data-toggle="modal" data-target="#record-modal-{{record.pk}}">Service at: {{record.mileage}}</a>
+            <p class="record_content">Service at: {{record.mileage}}
+            Technician: {{record.tech}}
+            </p>
+
+    {% if user.client %}
+
+        <button type="button" class="btn btn-outline-dark"><a class="nav-link" data-toggle="modal" data-target="#record-modal-{{record.pk}}">View Record</a></button>
+
+    {% endif %}
     {% if user.tech %}
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -60,16 +64,14 @@
                        
             {% include 'modals/delete/record_delete.html' %}
         </div>
-
-    {% endif %}
-
+    {% endif%}
 
 <!-- Service record modal-->
     <div class="modal fade" id="record-modal-{{record.pk}}" tabindex="-1" role="dialog"  >
         <div class="modal-dialog" >
             <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title"> Service on {{record.motorcycle}} at {{record.mileage}}</h3>
+                <h3 class="modal-title"> Record for {{record.motorcycle}} at {{record.mileage}}</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span>&times;</span>
                 </button>
@@ -101,6 +103,6 @@
 
         
     {% endfor %}
-
+</div>
 
 {% endblock %}

@@ -138,3 +138,7 @@ LOGOUT_REDIRECT_URL = '/'
 
 # crispy forms 
 CRISPY_TEMPLATE_PACK = 'uni_form'
+
+# for heroku deployment
+import django_heroku
+django_heroku.settings(locals())

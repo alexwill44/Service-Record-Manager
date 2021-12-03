@@ -12,6 +12,7 @@
 
     .modal-header {
         padding-left: 30px;
+        padding-bottom: 0;
         border-bottom: 3px solid grey;
     }
 
@@ -28,10 +29,7 @@
     .modal-footer{
         background: grey;
         border-top: 5px solid red;
-        
-        .btn{
-            
-        }  
+         
     }
 
     .container-submit-button {
@@ -40,7 +38,7 @@
     }
 
     .btn-primary {
-        margin-top: 15px;
-        width: calc(100% - 0px);
+        margin-right: 25%;
+        width: 50%;
     }
 }

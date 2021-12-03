@@ -30,10 +30,10 @@ class Home(TemplateView):
         if form.is_valid():
             client = form.save()
             login(request, client)
-            return redirect('moto_list')
+            return redirect('moto_show')
         else: 
             context = {'form': form}
-            return render(request, 'home.html', context) 
+            return render(request, 'registration/signup.html', context) 
             
 class About(TemplateView):
     template_name = 'about.html'
