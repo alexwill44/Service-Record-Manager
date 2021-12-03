@@ -1,11 +1,10 @@
 @import './modal';
 @import './moto_card';
-/* @import './background_effect'; */
 @import './record.scss';
-@import './moto_list.scss';
 @import './tech_list.scss';
 @import './forms.scss';
 @import './parts.scss';
+@import './home.scss';
 
 *{
     box-sizing: border-box;
@@ -24,6 +23,10 @@ a {
 nav-item{
        display:flex;
 }  
+
+.status{
+    max-width: 45%;
+}
 
 .dropdown-menu{
     background: lighten($color: grey, $amount: 10%);

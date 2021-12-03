@@ -4,21 +4,20 @@
     justify-content: center;
     align-items: space-around;
 
-    input{
-        margin-left: 10%;
-        width: 80%;    
+    input {
+        margin: 0 5%;
+        width: 80%; 
     }
 
     label{
-        margin-top: 5%;
-        margin-left: 10%;
+        margin: 5% 10% 0 10%;
         width: 20%;
+        color: black;
     }
 
     li{
         list-style:none;
     }
-
 }
 
 

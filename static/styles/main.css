@@ -6,6 +6,7 @@
 
 .modal-content .modal-header {
   padding-left: 30px;
+  padding-bottom: 0;
   border-bottom: 3px solid grey; }
 
 .modal-content p {
@@ -25,18 +26,18 @@
   justify-content: center; }
 
 .modal-content .btn-primary {
-  margin-top: 15px;
-  width: calc(100% - 0px); }
+  margin-right: 25%;
+  width: 50%; }
 
 .moto_card {
   background-color: #454545;
   margin: 10%;
   padding: 5%;
   gap: 5px;
-  border-right: 4px solid red;
-  border-left: 4px red;
-  border-top: 4px white;
-  border-bottom: 4px solid white;
+  border-right: 2px solid darkgray;
+  border-left: 2px solid darkgray;
+  border-top: 2px solid darkgray;
+  border-bottom: 2px solid darkgray;
   border-radius: 5px;
   max-width: 75vw;
   display: grid;
@@ -90,10 +91,46 @@
 .status_update {
   display: inline; }
 
-/* @import './background_effect'; */
+.list_card {
+  margin-left: 5vw;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  flex-direction: column;
+  width: 55vw;
+  transition: 0.1s linear; }
+  .list_card a {
+    text-decoration: none; }
+  .list_card img {
+    width: 80%;
+    max-height: 500px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 7px; }
+  .list_card p {
+    color: whitesmoke;
+    font-size: 12px; }
+  .list_card .moto_card {
+    padding: 5px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    justify-content: center;
+    gap: 30px;
+    transition: 0.15s linear; }
+  .list_card .moto_card:hover {
+    transform: scale(1.15);
+    z-index: 10;
+    transition: .15s ease-in-out;
+    border-right: 2px solid whitesmoke;
+    border-left: 2px solid whitesmoke;
+    border-top: 2px solid whitesmoke;
+    border-bottom: 2px solid whitesmoke;
+    color: black; }
+  .list_card span {
+    text-decoration: none; }
+
 .record_header {
   margin: 5% 33% 5% 37%;
-  font-size: 1.2em;
+  font-size: 1.4em;
   font-weight: bold;
   border-left: 1px solid red;
   border-bottom: 1px solid red; }
@@ -150,57 +187,36 @@
   margin: 0 5%;
   border-radius: 5%; }
 
-.parts_header {
-  border-bottom: 3px solid #0275d8; }
-  .parts_header .parts_title {
-    padding: 3% 0;
-    margin-left: 2.5%; }
-
-.list_card {
-  padding: 15px;
-  margin-left: 5vw;
-  margin-top: 2vh;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  flex-direction: column;
-  width: 55vw;
-  transition: 0.1s linear; }
-  .list_card img {
-    width: 80%;
-    max-height: 500px;
-    object-fit: cover;
-    object-position: top;
-    border-radius: 7px; }
-  .list_card p {
-    display: inline;
-    font-size: 12px; }
-  .list_card .moto_card {
-    padding: 5px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    justify-content: center;
-    gap: 30px;
-    transition: 0.15s linear; }
-  .list_card .moto_card:hover {
-    transform: scale(1.15);
-    z-index: 10;
-    transition: .15s ease-in-out;
-    border-left: 4px solid red;
-    border-top: 4px solid white; }
-
 .list_header {
   border-bottom: 7px groove #ff3333;
   border-left: 7px ridge #ff3333;
   margin: 40px 10% 10px 10%; }
 
 .search_moto {
-  margin-left: 25%; }
+  padding: 1% 3% 1% 3%;
+  align-items: space-around;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  margin-left: 30%;
+  margin-right: 30%;
+  border-top: 2px solid whitesmoke;
+  border-left: 2px solid whitesmoke;
+  border-radius: 5px; }
+  .search_moto .tech_tool_btn, .search_moto a {
+    color: black; }
+  .search_moto .tech_tool_btn {
+    margin: 5px; }
+
+.empty {
+  margin: 20px 10% 10px 10%;
+  border: 5px dotted whitesmoke; }
 
 .tech_list {
   display: flex; }
   .tech_list .card {
     padding: 15px;
-    margin-left: 20%;
+    margin-left: 40%;
+    margin-right: 50%;
     margin-top: 2vh;
     margin-bottom: 20px;
     padding-bottom: 20px;
@@ -222,12 +238,6 @@
     z-index: 10; }
     .tech_list .gallery .card:hover img {
       border: 2px solid #e6e6e6; }
-  .tech_list .display-page {
-    margin: 15% 0 0 15%; }
-  .tech_list .display-pagecard {
-    background-color: lightgrey; }
-  .tech_list .card-image {
-    padding: 20px; }
   .tech_list .tech_image {
     width: 80%;
     max-height: 400px;
@@ -236,11 +246,11 @@
     border: 2px solid, red;
     border-radius: 7px; }
   .tech_list p {
-    display: inline;
-    font-size: 12px; }
-
-.tech_tool_btn {
-  color: black; }
+    margin-top: 15px;
+    font-size: 1em; }
+  .tech_list a {
+    text-decoration: none;
+    color: black; }
 
 .uniForm {
   display: flex;
@@ -248,12 +258,12 @@
   justify-content: center;
   align-items: space-around; }
   .uniForm input {
-    margin-left: 10%;
+    margin: 0 5%;
     width: 80%; }
   .uniForm label {
-    margin-top: 5%;
-    margin-left: 10%;
-    width: 20%; }
+    margin: 5% 10% 0 10%;
+    width: 20%;
+    color: black; }
   .uniForm li {
     list-style: none; }
 
@@ -265,9 +275,12 @@
   color: black; }
 
 .parts_header {
-  border-bottom: 3px solid #0275d8; }
+  border-bottom: 3px solid #0275d8;
+  border-left: 3px solid #0275d8;
+  margin: 0 3%;
+  margin-top: 3%; }
   .parts_header .parts_title {
-    padding: 3% 0;
+    padding: 3% 3% 3% 0;
     margin-left: 2.5%; }
 
 .part_show {
@@ -279,6 +292,19 @@
   list-style-type: none; }
   .part_show :hover {
     cursor: default; }
+
+.greeting {
+  padding: 5px;
+  border: 4px double black;
+  min-height: 247px;
+  min-width: 291px;
+  max-height: 45vh;
+  max-width: 45vw;
+  margin: 25vh 30vw;
+  background: rgba(125, 125, 125, 0.25); }
+
+.shopname {
+  margin-bottom: 10%; }
 
 * {
   box-sizing: border-box; }
@@ -293,6 +319,9 @@ a {
 
 nav-item {
   display: flex; }
+
+.status {
+  max-width: 45%; }
 
 .dropdown-menu {
   background: #9a9a9a;

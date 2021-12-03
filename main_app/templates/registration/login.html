@@ -11,13 +11,11 @@
         <form class="uniForm" action="{% url 'login' %}" method="POST">
           {% csrf_token %}
           
-      {{form.as_p}}        
+          {{form.as_p}}        
 
           {{form.errors}}
-            
+          <input type='submit' class="btn btn-primary" value='Submit'>
         </div>
-        <div class="modal-footer">
-          <input type="submit" value="Submit">
         </form>
 
 {% endblock %}
