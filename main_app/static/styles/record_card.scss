@@ -1,0 +1,29 @@
+
+.card_holder{
+    margin-bottom: 15vh;
+}
+
+.record_card{
+    display:flex;
+    margin-left: 15vw;
+    margin-right: 20%;
+    border: 2px solid whitesmoke;
+    border-radius: 17%;
+    justify-content: center;
+
+    .btn{
+        margin-right: 33%;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        padding-right: 10px;
+    }
+}
+
+.record_content{
+    padding: 2.5%;
+    padding-left: 2.5%;
+    font-weight: bolder;
+}
+
+
+

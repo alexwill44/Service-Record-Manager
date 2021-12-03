@@ -5,6 +5,7 @@
 @import './forms.scss';
 @import './parts.scss';
 @import './home.scss';
+@import './record_card.scss';
 
 *{
     box-sizing: border-box;
@@ -34,6 +35,15 @@ nav-item{
     border: 1px dashed whitesmoke;
 }
 
+.about_image{
+    display: inline;
+    border-radius: 5%;
+    max-width: 35vw;
+    min-width: 35vw;
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
 
 
 

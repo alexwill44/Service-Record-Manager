@@ -104,14 +104,21 @@
 
     <div class="greeting">
         <h1 class="shopname"> Welcome to Moto Mechs Service Portal </h1>
-            
+          {% if user.is_authenticated %} 
+          
+          
+            <a href="{% url 'moto_show' %}"><button type="button" class="btn btn-outline-dark">View Motorcycles </button></a>
+         
+          
+          {% else %}
+
             <button type="button" class="btn btn-outline-dark">
                 <a data-toggle="modal" data-target="#signup-modal">Sign Up</a>
             </button>
             <button type="button" class="btn btn-outline-dark">
                 <a  data-toggle="modal" data-target="#login-modal">Sign In</a>
            </button>
-        
+      {% endif %}
 
 
 

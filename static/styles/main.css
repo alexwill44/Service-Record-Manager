@@ -31,7 +31,7 @@
 
 .moto_card {
   background-color: #454545;
-  margin: 10%;
+  margin: 5% 10%;
   padding: 5%;
   gap: 5px;
   border-right: 2px solid darkgray;
@@ -51,7 +51,7 @@
     justify-self: center;
     margin-right: 5vw; }
   .moto_card .info {
-    border-left: 2px solid navajowhite;
+    border-left: 2px solid #ff3333;
     font-size: 1vw;
     display: flex;
     flex-direction: column;
@@ -62,10 +62,6 @@
     .moto_card .info button {
       max-height: 7vh;
       font-size: 1.5vw; }
-
-.record_card {
-  margin-left: 15vw;
-  border-left: 5px double black; }
 
 .status {
   border: 2px solid black; }
@@ -127,6 +123,9 @@
     color: black; }
   .list_card span {
     text-decoration: none; }
+
+.create_record {
+  margin-top: 7%; }
 
 .record_header {
   margin: 5% 33% 5% 37%;
@@ -306,6 +305,27 @@
 .shopname {
   margin-bottom: 10%; }
 
+.card_holder {
+  margin-bottom: 15vh; }
+
+.record_card {
+  display: flex;
+  margin-left: 15vw;
+  margin-right: 20%;
+  border: 2px solid whitesmoke;
+  border-radius: 17%;
+  justify-content: center; }
+  .record_card .btn {
+    margin-right: 33%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-right: 10px; }
+
+.record_content {
+  padding: 2.5%;
+  padding-left: 2.5%;
+  font-weight: bolder; }
+
 * {
   box-sizing: border-box; }
 
@@ -327,5 +347,14 @@ nav-item {
   background: #9a9a9a;
   z-index: 1;
   border: 1px dashed whitesmoke; }
+
+.about_image {
+  display: inline;
+  border-radius: 5%;
+  max-width: 35vw;
+  min-width: 35vw;
+  margin-top: 15px;
+  margin-left: 15px;
+  margin-bottom: 15px; }
 
 /*# sourceMappingURL=main.css.map */
