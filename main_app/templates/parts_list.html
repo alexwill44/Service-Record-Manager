@@ -1,15 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<a class="nav-link" data-toggle="modal" data-target="#part-create-modal"><button> + Part </button></a>
+<div class="parts_header"> <h1 class="parts_title"> Parts Inventory:</h1></div>
+<a class="nav-link" data-toggle="modal" data-target="#part-create-modal"><button type="button" class=" add_part btn btn-outline-primary"> Add Part </button></a>
 
 {% include 'modals/create/part_create.html' %}
 <ul>
 
 {% for part in parts %}
-    <li>
+    <li class="part_show">
     <h5>{{part.part_number}}</h5>
-    <p>{{part.description}}</p>
+    <p>{{part.description|safe}}</p>
     </li>
 {% endfor %}
 

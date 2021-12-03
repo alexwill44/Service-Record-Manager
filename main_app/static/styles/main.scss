@@ -1,17 +1,14 @@
 @import './modal';
 @import './moto_card';
-@import './background_effect';
+/* @import './background_effect'; */
 @import './record.scss';
 @import './moto_list.scss';
 @import './tech_list.scss';
 @import './forms.scss';
+@import './parts.scss';
 
 *{
     box-sizing: border-box;
-    a{
-        text-decoration: none;
-        color: black;
-    }
 }
 
 body{
@@ -33,6 +30,7 @@ nav-item{
     z-index: 1;
     border: 1px dashed whitesmoke;
 }
+
 
 
 

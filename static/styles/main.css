@@ -34,8 +34,8 @@
   padding: 5%;
   gap: 5px;
   border-right: 4px solid red;
-  border-left: 4px inset red;
-  border-top: 4px inset white;
+  border-left: 4px red;
+  border-top: 4px white;
   border-bottom: 4px solid white;
   border-radius: 5px;
   max-width: 75vw;
@@ -90,6 +90,7 @@
 .status_update {
   display: inline; }
 
+/* @import './background_effect'; */
 .record_header {
   margin: 5% 33% 5% 37%;
   font-size: 1.2em;
@@ -149,6 +150,12 @@
   margin: 0 5%;
   border-radius: 5%; }
 
+.parts_header {
+  border-bottom: 3px solid #0275d8; }
+  .parts_header .parts_title {
+    padding: 3% 0;
+    margin-left: 2.5%; }
+
 .list_card {
   padding: 15px;
   margin-left: 5vw;
@@ -181,11 +188,19 @@
     border-left: 4px solid red;
     border-top: 4px solid white; }
 
+.list_header {
+  border-bottom: 7px groove #ff3333;
+  border-left: 7px ridge #ff3333;
+  margin: 40px 10% 10px 10%; }
+
+.search_moto {
+  margin-left: 25%; }
+
 .tech_list {
   display: flex; }
   .tech_list .card {
     padding: 15px;
-    margin-left: 5vw;
+    margin-left: 20%;
     margin-top: 2vh;
     margin-bottom: 20px;
     padding-bottom: 20px;
@@ -208,7 +223,7 @@
     .tech_list .gallery .card:hover img {
       border: 2px solid #e6e6e6; }
   .tech_list .display-page {
-    margin: 15px 0 0 15px; }
+    margin: 15% 0 0 15%; }
   .tech_list .display-pagecard {
     background-color: lightgrey; }
   .tech_list .card-image {
@@ -224,7 +239,7 @@
     display: inline;
     font-size: 12px; }
 
-.moto_search .btn {
+.tech_tool_btn {
   color: black; }
 
 .uniForm {
@@ -245,11 +260,28 @@
 .helptext {
   display: none; }
 
+.add_part {
+  margin: 3% 5% 5% 5%;
+  color: black; }
+
+.parts_header {
+  border-bottom: 3px solid #0275d8; }
+  .parts_header .parts_title {
+    padding: 3% 0;
+    margin-left: 2.5%; }
+
+.part_show {
+  border-left: 1px solid #e60000;
+  border-bottom: 1px solid #e60000;
+  margin-left: 5%;
+  margin-bottom: 3%;
+  margin-right: 25%;
+  list-style-type: none; }
+  .part_show :hover {
+    cursor: default; }
+
 * {
   box-sizing: border-box; }
-  * a {
-    text-decoration: none;
-    color: black; }
 
 body {
   background-color: grey;

@@ -58,17 +58,21 @@
       
       {% if user.is_authenticated %}
       
+      <li>
+        <a href="{% url 'moto_show' %}" class="nav-link" > Motorcycles </a>
+      </li>
       <li class="nav-item">
         <a href="{% url 'logout' %}" class="nav-link" > Sign Out </a>
       </li>
-      
+
       {% if user.tech %}
         <li>
           <a href="{% url 'parts_list' %}" class="nav-link"> Parts </a>
         </li>
-        <li>
-          <a href="{% url 'moto_show' %}" class="nav-link" > Motorcycles </a>
+        <li class="nav-item">
+          <a href="{% url 'logout' %}" class="nav-link" > Sign Out </a>
         </li>
+      
       {% endif %}
 
       {% if user.is_superuser %}
@@ -78,6 +82,9 @@
         <li>
           <a class="nav-link" href="{% url 'tech_create' %}" > Add Technician </a>
           <li>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'logout' %}" class="nav-link" > Sign Out </a>
         </li>
       {% endif %}
 

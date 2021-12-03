@@ -1,0 +1,29 @@
+
+.add_part {
+    margin: 3% 5% 5% 5%; 
+    color: black;
+}
+
+.parts_header {
+    border-bottom:3px solid #0275d8;
+    
+    .parts_title {
+        padding: 3% 0;
+        margin-left: 2.5%;
+    }
+}
+
+
+
+.part_show{
+    border-left: 1px solid darken($color: red, $amount: 5%);
+    border-bottom: 1px solid darken($color: red, $amount: 5%);
+    margin-left: 5%;
+    margin-bottom: 3%;
+    margin-right: 25%;
+    list-style-type: none;
+
+    :hover{
+        cursor: default;
+    }
+}

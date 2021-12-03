@@ -1,10 +1,15 @@
 {% block content %}
 
-<h2>{{header}}</h2>
+<h2 class="list_header">{{header}}</h2>
 
 <form action="" method="get" class="moto_search">
-    <input name="vin" placeholder="Enter VIN"  class="input">
-    <button class="btn btn-outline-primary" value='Search' type="submit"> Search </button><a href="" class="nav-link" data-toggle="modal" data-target="#moto-create-modal"><button class="btn btn-outline-success"> Add Motorcycle </button></a>
+  <div class="search_moto">
+        <input name="vin" placeholder="Enter VIN"  class="input search_vin">
+    
+        <button class=" tech_tool_btn btn btn-outline-primary" value='Search' type="submit"> Search </button><a href="" class="nav-link" data-toggle="modal" data-target="#moto-create-modal">
+
+        <button class="tech_tool_btn btn btn-outline-success"> Add Motorcycle </button></a>
+    </div>      
 </form>
 <div class="moto_list">
     

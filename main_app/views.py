@@ -30,7 +30,7 @@ class Home(TemplateView):
         if form.is_valid():
             client = form.save()
             login(request, client)
-            return redirect('moto_list')
+            return redirect('moto_show')
         else: 
             context = {'form': form}
             return render(request, 'home.html', context) 
@@ -38,6 +38,7 @@ class Home(TemplateView):
 class About(TemplateView):
     template_name = 'about.html'
 
+@method_decorator(login_required(login_url='/'), name='dispatch')
 class TechCreate(TemplateView):
     template_name = 'tech_create.html'
 
