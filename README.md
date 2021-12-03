@@ -50,3 +50,6 @@ Version 2:
 Wireframes : 
 
  ![wireframe](https://i.imgur.com/Y0wlqCQ.jpg)
+
+Entity Relationship Diagram (ERD) :
+ ![erd](https://i.imgur.com/zsdA7lj.png)
