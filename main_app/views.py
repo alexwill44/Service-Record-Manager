@@ -33,12 +33,11 @@ class Home(TemplateView):
             return redirect('moto_show')
         else: 
             context = {'form': form}
-            return render(request, 'home.html', context) 
+            return render(request, 'registration/signup.html', context) 
             
 class About(TemplateView):
     template_name = 'about.html'
 
-@method_decorator(login_required(login_url='/'), name='dispatch')
 class TechCreate(TemplateView):
     template_name = 'tech_create.html'
 

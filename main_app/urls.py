@@ -13,5 +13,6 @@ urlpatterns = [
     path('parts/', PartsList.as_view(), name='parts_list'),
     path('record/<int:pk>/part/<int:part_pk>/', RecordPartAssoc.as_view(), name='record_part_assoc'),
     path('record/<int:pk>/status/<int:st>', MotoStatusUpdate.as_view(), name='moto_status'),
-    path('technician/new/', TechCreate.as_view(), name='tech_create')
+    path('technician/new/', TechCreate.as_view(), name='tech_create'),
+    path('accounts/signup/', Home.as_view(), name='signup')
 ]
