@@ -347,6 +347,10 @@ nav-item {
   background: #9a9a9a;
   z-index: 1;
   border: 1px dashed whitesmoke; }
+  .dropdown-menu a {
+    color: black; }
+    .dropdown-menu a:hover {
+      color: white; }
 
 .about_image {
   display: inline;

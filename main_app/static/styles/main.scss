@@ -33,6 +33,14 @@ nav-item{
     background: lighten($color: grey, $amount: 10%);
     z-index: 1;
     border: 1px dashed whitesmoke;
+
+    a{
+        color: black;
+
+    &:hover{
+            color: white;
+        }
+    }
 }
 
 .about_image{
