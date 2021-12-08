@@ -45,7 +45,7 @@ Version 2:
         - The ability to add technicians notes to repair orders rather than just update the text of the original repair order (in order to perserve customer notes etc.) 
         - There is even more on the the way not the least of which is a better color scheme and more styling 
         
-** (please keep in mind version 1 of this app was build is arond a week by one person) **
+** (please keep in mind version 1 of this app was build in about a week by one person) **
 
 Wireframes : 
 
