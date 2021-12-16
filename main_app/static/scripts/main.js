@@ -7,8 +7,6 @@ $('#myModal').on('shown.bs.modal', function () {
 
 
 // text editor
-
-
 tinymce.init({
   selector: 'textarea',
   menubar: false,
