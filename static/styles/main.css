@@ -366,13 +366,10 @@ nav-item {
 .github {
   margin-left: 15%; }
 
-.fa-github, .fa-linkedin-in {
-  margin-left: 2%;
-  margin-bottom: 1%; }
-  .fa-github p, .fa-linkedin-in p {
-    display: inline;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1rem; }
+.fa-github p, .fa-linkedin-in p {
+  display: inline;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem; }
 
 .about_image {
   display: inline;
