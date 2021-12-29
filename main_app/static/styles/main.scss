@@ -43,6 +43,25 @@ nav-item{
     }
 }
 
+/* about page */
+.linkedin {
+    margin-left: 10%;
+}
+
+.github {
+    margin-left: 15%;
+}
+
+.fa-github, .fa-linkedin-in {
+    margin-left: 2%;
+    margin-bottom: 1%;
+    p {
+        display: inline;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1rem;
+    }   
+}
+
 .about_image{
     display: inline;
     border-radius: 5%;
