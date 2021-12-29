@@ -3,13 +3,19 @@
 {% block title %} - Parts {% endblock %}
 
 {% block content %}
-<div class="parts_header"> <h1 class="parts_title"> Parts Inventory:</h1></div>
+<div class="parts_header"> <h1 class="parts_title"> Parts Inventory: {{header}} </h1></div>
+
+<form method="get" class="pn_search">
+    <input name="pn" placeholder="Search by Part Number" class="input pn_search">
+    <button class="pn_tool_btn btn btn-outline-primary" value='Search' type="submit"> Search </button>
+</form>
+
 <a class="nav-link" data-toggle="modal" data-target="#part-create-modal"><button type="button" class=" add_part btn btn-outline-primary"> Add Part </button></a>
 
 {% include 'modals/create/part_create.html' %}
 <ul>
 
-{% for part in parts %}
+{% for part in results %}
     <li class="part_show">
     <h5>{{part.part_number}}</h5>
     <p>{{part.description|safe}}</p>

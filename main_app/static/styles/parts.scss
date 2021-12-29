@@ -24,8 +24,17 @@
     margin-bottom: 3%;
     margin-right: 25%;
     list-style-type: none;
+    padding: 1% 0 1% 2%;
 
     :hover{
         cursor: default;
     }
+}
+
+.pn_search {
+    margin: 3% 0 0 3.5%;
+}
+
+.pn_tool_btn {
+    color: black;
 }

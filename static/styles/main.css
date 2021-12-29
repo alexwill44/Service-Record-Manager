@@ -288,9 +288,16 @@
   margin-left: 5%;
   margin-bottom: 3%;
   margin-right: 25%;
-  list-style-type: none; }
+  list-style-type: none;
+  padding: 1% 0 1% 2%; }
   .part_show :hover {
     cursor: default; }
+
+.pn_search {
+  margin: 3% 0 0 3.5%; }
+
+.pn_tool_btn {
+  color: black; }
 
 .greeting {
   padding: 5px;
@@ -351,6 +358,21 @@ nav-item {
     color: black; }
     .dropdown-menu a:hover {
       color: white; }
+
+/* about page */
+.linkedin {
+  margin-left: 10%; }
+
+.github {
+  margin-left: 15%; }
+
+.fa-github, .fa-linkedin-in {
+  margin-left: 2%;
+  margin-bottom: 1%; }
+  .fa-github p, .fa-linkedin-in p {
+    display: inline;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem; }
 
 .about_image {
   display: inline;

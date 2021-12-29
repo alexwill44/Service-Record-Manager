@@ -85,7 +85,7 @@ class MotoCreate(CreateView):
         if vin != None: 
             context['results'] = Motorcycle.objects.filter(vin__icontains=vin)
             count = len(context['results'])
-            context["header"] = f'Found {count} with a VIN that contains "{vin}"'
+            context["header"] = f'Found {count} with a VIN that contains {vin}'
             return context
         else: 
             return context 
@@ -173,17 +173,27 @@ class PartsList(CreateView):
     model = Part
     fields = ['part_number', 'description']
     template_name = 'parts_list.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['parts'] = Part.objects.all()
-        return context
         
     def post(self, request):
         num = request.POST.get('part_number')
         des = request.POST.get('description')
         Part.objects.create(part_number=num, description=des)
         return redirect('parts_list')
+### Parts Search 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pn = self.request.GET.get('pn')
+        context["header"] = 'Search by Part Number'
+        
+        if pn == None:
+            context['results'] = Part.objects.all()
+            context['header'] = 'Displaying all parts in database' 
+        if pn != None: 
+            context['results'] = Part.objects.filter(part_number__icontains=pn)
+            context["header"] = f'{pn}'
+            return context
+        else: 
+            return context
 
 @method_decorator(login_required(login_url='/'), name='dispatch')   
 class RecordPartAssoc(View): 
